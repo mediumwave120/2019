@@ -1,0 +1,156 @@
+
+#header,.container{
+	width: 1200px;
+	margin:0 auto;
+}
+#header{
+	.top-wrap{
+		height: 40px;
+		line-height: 40px;
+		background: #fafafa;
+		font-size: 16px;
+		.header-l{
+			float:left;
+		}
+		.header-r{
+			float:right;
+		}
+		a{
+			color: #5a5a5a;
+			padding:0 11px;
+		}
+		span{
+			display: inline-block;
+			width: 1px;
+			height: 16px;
+			background-color: #f2f2f2;
+			margin-bottom: -2px;
+		}
+	}
+	#bottom-wrap{
+		height: 110px;
+		background: #fff;
+		position: relative;
+		z-index: 99;
+		.aaaa{
+			position: relative;
+			height: 110px;
+			width: 1200px;
+			
+			.bottom-l{
+				width: 220px;
+				height: 110px;
+				line-height: 110px;
+				text-align: center;
+				 float: left;
+				// position: absolute;
+				
+				a{
+					img{
+						border:none;
+						 vertical-align: middle;
+					}
+				}
+				.out{
+					display: none;
+				}
+			}
+			.bottom-c{
+				// position: absolute;
+				// left: 220px;
+				width: 600px;
+				margin-left: 220px;
+		        div{
+		        	 float:left;
+		        	.search-tab-box{
+		        		margin-top: 16px;
+		        		margin-left: 139px;
+		        		#tab{
+
+		        			height: 30px;
+							li{
+								height: 30px;
+								width: 60px;
+								line-height: 30px;
+								text-align: center;
+								color:red;
+								cursor:pointer;
+								float: left;
+								&.active{
+									background: red;
+									color:#fff ;
+									height: 30px;
+								}
+							}
+		        		}
+		        		input[type='text']{
+		        			width: 370px;
+							height: 34px;
+							padding-left: 10px;
+							border:1px solid #F86D5A;
+							outline: none;
+							color:#cccccc;
+		        		}
+		        		input[type='button']{
+							width: 91px;
+							height: 34px;
+							float: right;
+							margin-right: -3px;
+							border:none;
+							color:#fff;
+							background: #F86D5A;
+							font-size: 16px;
+							text-align: center;
+							outline: none;
+						}
+						.tab-content{
+						 	// position: absolute;
+						 	
+						 	.hots{
+						 		li{
+									float:left;
+									color: #e9e9e9;
+									font-size: 14px;
+									padding-right: 16.5px;
+									line-height: 32px;
+						 		}
+						 	}
+						 	// .shop-hidden{
+						 	// 	display: none;
+						 	// 	li{
+								// 	float:left;
+								// 	color: #e9e9e9;
+								// 	font-size: 14px;
+								// 	padding-right: 16.5px;
+								// 	line-height: 32px;
+						 	// 	}
+						 	// }
+						}
+		        	}
+		        }
+			}
+			.bottom-r{
+				// position: absolute;
+				// right: 0;
+				width: 144px;
+				height: 34px;
+				line-height: 33px;
+				background: #F4F4F4;
+		        float: right;
+		        margin-top: 46px;
+		        img{
+					width: 20px;
+					height: 20px;
+					margin-left: 14px;
+					vertical-align: middle;
+					margin-top: -5px;
+				}
+				span{
+					margin-left: 10px;
+					font-size: 14px;
+					color:#6d6e6e;
+				}
+			}
+		}
+	}
+}

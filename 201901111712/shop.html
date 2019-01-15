@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+  <!-- header -->
+  <div id="app">
+    <header>
+        <div id="header">
+          <div class="top-wrap">
+            <div class="header-l">
+             <a href="javascript:;">欢迎您！</a> <span></span>  <a href="#" class="name"></a> 
+             <a href="javascript:;" class="login-state" @click="login">请登录</a> <span></span>
+                 <a href="javascript:;" class="login-end " style="display:none;"  @click="deletelogin()">退出登录</a>             
+          </div>
+          <div class="header-r">
+             <a href="#">收藏夹</a> <span></span>
+             <a href="ucenter.html?my_order" >我的订单</a> <span></span>
+             <a href="#">客服服务</a>
+          </div>
+          </div>
+          <div class="bottom-wrap" id="bottom-wrap">
+             <div class="aaaa">
+               <div class="bottom-l">
+                  <a href="index.html">
+                    <img src="imgs/logo.png">
+                  </a>
+                </div>
+                <div class="bottom-c">
+                  <div>
+                    <div class="search-tab-box">
+                      <ul id="tab">
+                        <li 
+                        v-for="(tab_list,index) in tabList"
+                        :class="{'active':index==tab_list.id}"
+                        @click="changTab(index)"
+                        :id="index">
+                          {{tab_list.name}}
+                        </li>
+                      </ul>
+                      <input type="text" name="" class="search" placeholder="请输入想要找的宝贝" v-model="content" :value="content"/>
+                      <input type="button" name=""  value="搜索" class="SEARCH" @click="search"/>
+                      <div class="tab-content">
+                        <ul v-for="(rl,index) in recommendList"  
+                          :class="index==rl.id?'hots':'hide'" 
+                          @click="changTab(index)"
+                          >
+                            <li v-for="goods in rl.RecommendGoods" :class=""><a href="#">{{goods.name}}</a></li>
+                            <li v-for="shop in rl.Merchants_In"   :class=""><a href="#">{{shop.shop_name}}</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-r">
+                  <a href="shopping_cart.html">
+                      <img src="imgs/购物车空.png">
+                      <span>我的购物车</span>
+                    </a>
+                </div>
+              </div>
+          </div>
+        </div>
+    </header>
+    <!-- mall start -->
+    <div class="container">
+      <div class="home">
+        <div class="goods-classify">
+          <ul>
+            <li>首页<span></span></li>
+            <li class="list"><span class="left"></span>列表<span class="right"></span></li>
+            <li class="list1"><span class="left1"></span>产品详情<span class="right1"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="shop">
+        <div class="shop-filter">
+          <h3>{{shop.shop_name}}</h3>
+          <span @click="follow(shop.is_focus)"   v-if="shop.is_focus=='0'" class="follow">关注</span>
+          <span @click="follow(shop.is_focus)"   v-if="shop.is_focus=='1'" class="un_follow">已关注</span>
+          <span>粉丝</span>
+          <span class="follow_num">{{shop.focuscount}}</span>
+        </div>
+        <div class="shop-img">
+          <img :src="'http://122.112.209.170:8088'+shop.shop_image" alt="" >
+        </div>
+        <div class="shop-list">
+          <div class="shop-sort">
+            <ul>
+              <li v-for="(sort_list,i) in sortList" class="default" 
+              :class="{'active-color':i+1==sort_list.num}" @click="getMerchantsInId(i+1)">
+                {{sort_list.name}}
+              </li>
+              <li><span>1</span>/<span>12</span><span class="prev">&lt;</span><span class="next">&gt;</span></li>
+            </ul>
+          </div>
+          <div class="shop-goods">
+             <ul>
+                <li v-for="goods in shop.Goods" @click="Goods_Dateils(goods.goods_id)">
+                    <div class="good-img">
+                      <img src="imgs/loginbj1.png" alt="" v-if="goods.icon==''">
+                      <img :src="'http://122.112.209.170:8088'+goods.icon" alt="" v-else>
+                    </div>
+                    <div class="goods">
+                      <!-- <div>窖藏30年<span class="classical">经典干红</span>干红清香型葡萄酒</div>
+                      <div>AFTER 30 YEARSRED</div> -->
+                      <div class="goods-name" :title="goods.name">{{goods.name}}</div>
+                      <div class="goods-describe">全高清屏 / 人工智能语音全高清屏人工智能语音全高清屏 / 人工智能语音全高清屏 / 人工智能语音</div>
+                    </div>
+                    <div class="goods-price">
+                      <span>¥{{goods.buying_price}}</span>
+                      <del>¥{{goods.original_price}}</del>
+                    </div>
+                </li>
+              </ul>
+          </div>   
+        </div>
+        <div class="clear"></div>
+        <div class="pagination">
+          <ul>
+            <li>上一页</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>.....</li>
+            <li>99</li>
+            <li>下一页</li>
+            <li>跳转到<input type="text" style="width: 40px;">页</li>
+            <li>跳转</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ad">
+        <img src="imgs/ad.jpg" alt="" width="100%" height="617">
+    </div>
+    <div class="h162"> </div>
+    <h-recommend></h-recommend>
+  </div>
+  <!-- footer -->
+  <h-footer></h-footer>
+  <!-- login -->
+  <h-login></h-login>
+<script src="js/plugins/jquery/jquery.min.js"></script>
+<script src='js/plugins/vue/vue.min.js'></script>
+<script src="js/common/cookies.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/shop.js"></script>
+<script>
+
+</script>
+</body>
+</html>

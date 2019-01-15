@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+	<title></title>
+	<style type="text/css">
+		.confirm-pop3{position:fixed;bottom:0;left:0;right:0;top:0;background-color:rgba(0,0,0,.5)}#app .confirm-pop3 .confirm-mode{position:fixed;bottom:0;left:0;right:0;background-color:#fff;height:400px}#app .confirm-pop3 .confirm-mode .close{display:inline-block;line-height:50px;margin-left:5px}#app .confirm-pop3 .confirm-mode .close img{display:inline-block;transform:scale(.4);vertical-align:middle;margin-top:-4px}#app .confirm-pop3 .confirm-mode .title{margin-top:-50px;height:50px;line-height:50px;text-align:center;border-bottom:1px solid #eee;font-weight:700}#app .confirm-pop3 .confirm-mode .pay-mode{margin-top:20px;height:50px;line-height:50px;box-sizing:border-box;border:1px solid #eee;color:#888;display:flex;text-align:center}#app .confirm-pop3 .confirm-mode .pay-mode span{flex:1;text-align:center;border:1px solid #eee}#app .confirm-pop3 .confirm-mode .pay-mode span input{display:inline-block;text-align:center;width:100%;border:none;outline:0}#app .confirm-pop3 .confirm-mode .keyboard{width:100%;position:fixed;left:0;right:0;bottom:0}#app .confirm-pop3 .confirm-mode .keyboard span{float:left;margin-top:-1px;box-sizing:border-box;display:inline-block;line-height:50px;width:33.33%;text-align:center;border:1px solid #eee;font-weight:700;
+			font-size:22px}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="confirm-pop3" >     
+	      <div class="confirm-mode">
+	        <div class="close"  @click="payModeClose(1)"><img src="../imgs/ic_black_back.png" alt=""></div>
+	        <div class="title">请输入支付密码</div>
+	        <div class="pay-mode">
+	         <!--  <span><input type="number" name="" maxlength="1" readonly v-model="pwdList"></span>
+	          <span><input type="number" name="" maxlength="1" readonly v-model="pwdList"></span>
+	          <span><input type="number" name="" maxlength="1" readonly v-model="pwdList"></span>
+	          <span><input type="number" name="" maxlength="1" readonly v-model="pwdList"></span>
+	          <span><input type="number" name="" maxlength="1" readonly v-model="pwdList"></span>
+	          <span><input type="number" name="" maxlength="1" readonly v-model="pwdList"></span> 
+	        -->
+	        <span>{{pwdObj.one||pwdObj.one===0?'●':''}}</span>
+          <span>{{pwdObj.two||pwdObj.two===0?'●':''}}</span>
+          <span>{{pwdObj.three||pwdObj.three===0?'●':''}}</span>
+          <span>{{pwdObj.four||pwdObj.four===0?'●':''}}</span>
+          <span>{{pwdObj.five||pwdObj.five===0?'●':''}}</span>
+          <span>{{pwdObj.six||pwdObj.six===0?'●':''}}</span>
+
+	        <!-- <span>{{pwdObj.one}}</span>
+	        <span>{{pwdObj.two}}</span>
+	        <span>{{pwdObj.three}}</span>
+	        <span>{{pwdObj.four}}</span>
+	        <span>{{pwdObj.five}}</span>
+	        <span>{{pwdObj.six}}</span> -->
+	        </div>
+	        <div class="keyboard">
+	          <span v-for="(key,index) in keys" 
+	          v-html="key" 
+			  @click="selected(index+1)"
+	          ></span>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+  <script type="text/javascript">
+  	
+  	var vm =new Vue({
+  		el:'#app',
+  		data:{
+  			items: [0, 1, 2, 3, 4, 5],
+  			pwdList:[],
+	        keys: [1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0,'&times;'],
+
+	        pwdObj:{
+		      one:'',
+		      two:'',
+		      three:'',
+		      four:'',
+		      five:'',
+		      six:''
+		    },
+		    pwd:[]
+  		},
+    	methods:{
+    		selected:function(num) {
+		        var _this=this;
+		        if(_this.pwdList.length>0){
+			        _this.pwdList.forEach(function(item){
+			        	// console.log(item)
+			        })		        	
+		        }
+
+		        if(num===11){
+		        	num=0;
+		        }
+		        if(num===12){
+		        	num="";
+		        	_this.del();
+		        }
+		        if(_this.pwdObj.one===""){
+			        // _this.pwdList.push(num);
+			        _this.pwdObj.one=num;		        	
+		        }else if(_this.pwdObj.two===""){
+		        	// _this.pwdList.push(num);
+			        _this.pwdObj.two=num;
+		        }else if(_this.pwdObj.three===""){
+		        	// _this.pwdList.push(num);
+			        _this.pwdObj.three=num;
+		        }
+		        else if(_this.pwdObj.four===""){
+		        	// _this.pwdList.push(num);
+			        _this.pwdObj.four=num;
+		        }
+		        else if(_this.pwdObj.five===""){
+		        	// _this.pwdList.push(num);
+			        _this.pwdObj.five=num;
+		        }else if(_this.pwdObj.six===""){
+		        	// _this.pwdList.push(num);
+			        _this.pwdObj.six=num;
+
+		        }else{
+
+		        }
+		       //console.log(_this.pwdList.length)
+		        //if(_this.pwdList.length===6){
+		        	var str="";
+		    	 	 str+=_this.pwdObj.one;
+		    	 	 str+=_this.pwdObj.two;
+		    	 	 str+=_this.pwdObj.three;
+		    	 	 str+=_this.pwdObj.four;
+		    	 	 str+=_this.pwdObj.five;
+		    	 	 str+=_this.pwdObj.six;
+		    	 	console.log(str.length)
+		    	 	if(str.length===6){
+		    	 		alert(str)
+		    	 	}
+		        //}		        
+		    },
+		    del:function(){
+		    	var _this=this;
+		    	if(_this.pwdObj.six || _this.pwdObj.six===0){
+		    	 	// _this.pwdList.pop();      
+		    		_this.pwdObj.six="";
+		    	}else if(_this.pwdObj.five || _this.pwdObj.five===0){
+		    		// _this.pwdList.pop();      
+		    		_this.pwdObj.five="";
+		    	}
+		    	else if(_this.pwdObj.four || _this.pwdObj.four===0){
+		    		// _this.pwdList.pop();      
+		    		_this.pwdObj.four="";
+		    	}
+		    	else if(_this.pwdObj.three || _this.pwdObj.three===0){
+		    		// _this.pwdList.pop();      
+		    		_this.pwdObj.three="";
+		    	}
+		    	else if(_this.pwdObj.two || _this.pwdObj.two===0){
+		    		// _this.pwdList.pop();      
+		    		_this.pwdObj.two="";
+		    	}
+		    	else if(_this.pwdObj.one || _this.pwdObj.one===0){
+		    		// _this.pwdList.pop();      
+		    		_this.pwdObj.one="";
+		    	}else{
+
+		    	}
+		    	
+		    	//console.log(_this.pwdList)
+ 	
+		    }
+    	}
+	     
+  	});
+  </script>
+
+</body>
+</html>
+

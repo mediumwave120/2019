@@ -1,0 +1,201 @@
+*{
+	padding:0;
+	margin:0;
+}
+body{
+	background-color: #f5f5f5;
+	height: 100%;
+	overflow-x:hidden;
+	max-width: 600px;
+	margin:0 auto;
+}
+#app{
+	.header{
+		width: 100%;
+		position: fixed;
+		top:0;
+		z-index:1;
+		max-width: 600px;
+		.top{
+					
+			background-color: #fd6603;;
+			line-height: 50px;
+			img{
+				transform: scale(0.3);
+				vertical-align: middle;
+			}
+			div{
+				text-align: center;
+				margin-top: -54px;
+				line-height: 50px;
+				color:#fff;
+			}
+		}
+		.bottom{
+			.tab{		
+				margin:0px 3.2% 0px 3.2%;
+				background-color: #fff;
+				display: flex;
+				text-align: center;
+				.tab-item{
+					flex: 1;
+					line-height: 35px;
+					font-size: 15px;
+					
+				}
+				.active{
+					border-bottom: 2px solid #fd6603;
+				}
+			}
+		}
+	}
+	.shopping-car{
+		margin:90px 3.2% 0px 3.2%;
+		
+		li{
+			background-color: #fff;
+			list-style:none;
+			// margin-left:6px;
+			margin-top: 10px;
+			.shop{
+				border-bottom: 1px solid rgba(187, 187, 187,.4);
+				height: 32px;
+				line-height: 32px;
+				padding-left:6px;
+				span{
+					font-size: 16px;
+				}
+				img{
+					width: 20px;
+					height: 20px;
+					vertical-align: middle;
+					// margin:6px 0;
+					transform:scale(0.6);
+					padding-right:6px;
+					margin-top: -2px;
+				}
+				.state{
+					float: right;
+					margin-right: 10px;
+					color:#fd6603;
+				}
+			}
+			
+			.goods{
+				
+				ul{
+					li{
+						border-bottom: 1px solid rgba(187, 187, 187,.4);
+						list-style:none;
+						height: 75px;
+						.goods-info{
+							position: relative;
+							height: 56px;
+							top:5px;	
+							img{
+								// position: absolute;
+								width: 58px;
+								height: 56px;
+							}
+							.goods-name{
+								position: absolute;
+								top:0px;
+								left:65px;
+								line-height: 20px;
+								overflow: hidden;
+								text-overflow:ellipsis;
+								white-space: nowrap;
+								width: 180px;
+								font-size: 15px;
+							}
+							.goods-spec{
+								position: absolute;
+								top:25px;
+								left:65px;
+								line-height: 20px;
+								overflow: hidden;
+								text-overflow:ellipsis;
+								white-space: nowrap;
+								width: 180px;
+								font-size: 15px;
+							}
+							.goods-price{
+								position: absolute;
+								top:0px;
+								right:10px;
+								.one{
+									text-align: right;
+									span{
+									color:red;
+									}
+								}
+								.two{
+									del{
+
+									}
+								}
+								.three{
+									text-align: right;
+								}
+								
+								
+							}
+							
+						}
+					}
+				}
+			}
+			.calc{
+				width: 100%;
+				background-color: #fff;
+				line-height: 30px;
+				text-align: right;
+				.total{
+					margin-right: 10px;
+				}
+				.totals{
+					margin-right: 5px;
+				}
+			}
+			.order-state{
+				background-color: #fff;
+				line-height: 30px;
+				height: 40px;
+				width: 100%;
+				text-align: right;
+				button{
+					display: inline-block;
+					width: 80px;
+					background-color: #fff;
+					line-height: 30px;
+					outline: none;
+					border:none;
+					margin-right: 5px;
+					border-radius: 15px;
+				}
+				.cancle{
+					border:1px solid grey;
+					color:grey;
+				}
+				.pay{
+					border:1px solid #fd6603;
+					color:#fd6603;
+				}
+				.logistics{
+					border:1px solid grey;
+				}
+				.confirm{
+					border:1px solid #fd6603;
+					color:#fd6603;
+				}
+				.del{
+					border:1px solid grey;
+				}
+				.evaluate{
+					border:1px solid #fd6603;
+					color:#fd6603;
+				}
+			}
+		}
+	}
+}

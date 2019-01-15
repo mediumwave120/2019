@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+  <meta name="full-screen" content="yes">
+  <title></title>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="css/payment_success.css">
+
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <div class="top">
+        <a  href="javascript:;" @click="history.go(-1)">
+          <img src="../imgs/fh.png">
+        </a>    
+        <div>支付成功</div>       
+      </div>
+    </div>
+    <div class="order-sum-price">¥11</div>
+    <div class="operation">
+      <div class="select-order"><a href="my_order.html">查看订单</a></div>
+      <div class="return-home"><a href="index.html">返回首页</a></div>
+    </div>
+    <div class="recommend">
+        <div class="txt">为您推荐</div>
+        <div class="recommend-category"></div>
+        <div class="recommend-goods">
+          <ul>
+            <li v-for="goods in recommendGoodsList">
+              <a target="_parent" :href="'goods_detail.html?goods_id='+goods.goods_id">
+                <div class="category-img">
+                  <img :src="'http://122.112.209.170:8088'+goods.icon">
+                </div>
+                <div class="category-name">
+                  {{goods.name}}
+                </div>
+                <div class="category-price">
+                  <span>¥{{goods.buying_price}}</span>
+                  <del>¥{{goods.original_price}}</del>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <script src="../js/plugins/jquery/jquery.min.js"></script>
+  <script src="../js/plugins/vue/vue.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="../js/plugins/swiper/swiper.min.js"></script>
+  <script src="js/payment_success.js"></script>
+</body>
+</html>

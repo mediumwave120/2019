@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/shopping.css">
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      购物车
+    </div>
+    <ul class="shopping-car">
+      <li v-for="shop in shopList">
+        <div class="shop">
+          <img src="../imgs/gouwuche_un.png" v-if="!shop.shopCheck"  @click='selectShop(shop)'>
+          <img src="../imgs/gouwuche.png"  v-else="shop.shopCheck" @click='selectShop(shop)'>
+          <span>{{shop.shop_name}}</span>
+        </div>
+        <div class="goods">
+          <ul>
+            <li v-for="(goods,index) in shop.GoodsList">
+              <div class="check">               
+                 <img src="../imgs/gouwuche_un.png" v-if="!goods.goodsCheck"  @click='selectGoods(goods,shop)'>
+                 <img src="../imgs/gouwuche.png"  v-else="goods.goodsCheck" @click='selectGoods(goods,shop)'>
+              </div>
+              <div class="goods-info">
+                <img src="../imgs/bajiamache.png" v-if="goods.icon===''">
+                <img :src="'http://122.112.209.170:8088'+goods.icon" v-else>
+                <div class="goods-name">{{goods.name}}</div>
+                <div class="goods-spec">{{goods.specificationsText}}</div>
+                <div class="goods-price">¥{{goods.buying_price}}</div>
+                <div class="calc">
+                  <span @click="changeMoney(goods,-1)">-</span>
+                  <span>{{goods.goods_count}}</span>
+                  <span @click="changeMoney(goods,1)">+</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div class="fixed">
+    	<div class="checked-all">
+              <div class="left"  @click='checkedAll'>
+                <img src="../imgs/gouwuche_un.png" v-if="!checkeAll">
+                <img src="../imgs/gouwuche.png" v-else="checkeAll">
+                <span>全选</span>
+              </div>
+              <div class="right">
+                <div class="total-calc">
+                  <span>合计:</span>
+                  <span></span>
+                  <span>{{totalPrice|formatMoney}}</span>
+                  <button @click="balance" >结算</button>
+                </div>                
+              </div>
+          </div>
+    </div>
+  </div>
+  <script src="../js/plugins/axios/axios.min.js"></script>
+  <script src="../js/plugins/vue/vue.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/shopping.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" href="css/goods_search.css">
+    <title>列表</title>
+    <link rel="stylesheet" type="text/css" href="css/ft-carousel.css">
+
+</head>
+<body>
+  <!-- mall header -->
+  <h-header></h-header>
+  <div id="app">
+    <!-- mall -->
+    <div class="container">
+      <div class="home">
+        <div class="goods-classify">
+          <ul>
+            <li>首页<span></span></li>
+            <li class="list"><span class="left"></span>列表<span class="right"></span></li>
+            <li class="list1"><span class="left1"></span>产品详情<span class="right1"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="shop">
+        <div class="shop-filter">
+          <h3>商品筛选</h3>
+          <span>共<span v-cloak>{{skipList.length}}</span>个商品</span>
+        </div>
+        <!--<div class="shop-type">
+          <ul>
+            <li>
+              <div class="brand">
+                <h3>品牌</h3>
+                <ul>
+                 <li>品牌1</li>
+                 <li>品牌2</li>
+                 <li>品牌3</li>
+                 <li>品牌4</li>
+                 <li>品牌5</li>
+                 <li>品牌6</li>
+                 <li>品牌7</li>
+                 <li>品牌8</li>
+                 <li>品牌9</li>
+                 <li>品牌10</li>
+                 <li>品牌11</li>
+                 <li>品牌12</li>
+                 <li>品牌13</li>
+                 <li>品牌14</li>
+                 <li>品牌15</li>
+                 <li>品牌16</li>
+                 <li>品牌17</li>
+                 <li>品牌18</li>       
+                </ul>
+                <i></i>
+                <span class="more">更多</span>
+              </div>
+            </li>
+            <li>
+              <div class="style">
+                <h3>风格</h3>
+                <ul>
+                  <li>澳美风格</li>
+                  <li>商务休闲</li>
+                  <li>其他</li>
+                </ul>              
+              </div>
+            </li>
+            <li>
+              <div class="price">
+                <h3>价格</h3>
+                <ul>
+                  <li>1-999</li>
+                  <li>1000-1999</li>
+                  <li>2000-2999</li>
+                  <li>3000-3999</li>
+                  <li style="width: 200px;">
+                    <input type="text"> -
+                    <input type="text">
+                    <input type="button" value="确定">
+                  </li>
+                </ul>              
+              </div>
+            </li>
+            <li>
+              <div class="mold">
+                <h3>类型</h3>
+                <ul>
+                  <li>针口</li>
+                  <li>其他</li>
+                  <li>等等</li>
+                </ul>              
+              </div>
+            </li>
+          </ul>
+        </div>-->
+        <div class="shop-list" v-cloak>
+          <div class="shop-sort">
+            <ul>
+                <li v-for="(sort_list,i) in sortList" class="default" 
+              :class="{'active-color':i+1==sort_list.num}" 
+              @click="GetGoodsList(i+1)" >
+                {{sort_list.name}}
+              </li>
+              <li><span>1</span>/<span>12</span><span class="prev">&lt;</span><span class="next">&gt;</span></li>
+            </ul>
+          </div>
+          <div class="shop-goods">
+             <ul>
+                <li v-for="skip_list in skipList" @click="Goods_Dateils(skip_list.goods_id)">
+                    <div class="good-img">
+                      <img src="imgs/bajiamache.png" alt="" v-if="skip_list.icon==''">
+                      <img :src="'http://122.112.209.170:8088'+skip_list.icon" alt="" v-else>
+                    </div>
+                    <div class="goods">
+                      <!--<div>窖藏30年<span class="classical">经典干红</span>干红清香型葡萄酒</div>
+                      <div>AFTER 30 YEARSRED</div>-->
+                        <div class="goods-name" :title="skip_list.name" >{{skip_list.name}}</div>
+                        <div class="goods-describe">全高清屏 / 人工智能语音全高清屏 / 人工智能语音全高清屏 / 人工智能语音</div> 
+                    </div>
+                    <div class="goods-price">
+                      <span>¥{{skip_list.buying_price}} </span>
+                      <del>{{skip_list.original_price}} </del>
+                    </div>
+                </li>
+              </ul>
+          </div>   
+        </div>
+        <div class="clear"></div>
+        <div class="paginations">
+          <ul>
+            <li>上一页</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>.....</li>
+            <li>99</li>
+            <li>下一页</li>
+            <li>跳转到<input type="text" value="1">页</li>
+            <li>跳转</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ad -->
+    <div class="ad">
+        <img src="imgs/1.png" alt="" width="100%" height="617">
+    </div>
+    <div class="h162"> </div>
+    <!-- recommend -->
+    <h-recommend></h-recommend>
+  </div>
+  <!-- mall footer -->
+  <h-footer></h-footer>
+  <!-- login -->
+  <h-login></h-login>    
+      
+  <script src="js/plugins/jquery/jquery.min.js"></script>
+  <script src="js/plugins/vue/vue.min.js"></script>
+  <script src="js/common/cookies.js"></script>
+  <script src="js/common/common.js"></script>
+  <script src="js/goods_search.js"></script>
+</body>
+</html>

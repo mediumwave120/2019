@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/shopping_cart.css" >
+    <link rel="stylesheet" href="plugins/layer-v3.1.1/layer/theme/default/layer.css">
+    <style type="text/css">
+      .show{
+          display: block;
+      }
+      .hide{
+          display: none;
+      }
+      [v-cloak] { display: none } 
+    </style>
+</head>
+<body>
+  <!-- 商城头部 -->
+  <h-header></h-header>
+  <div id="app" v-cloak>
+    <!-- 商城正文 -->
+    <div class="container">
+      <!-- <div class="home">
+        <div class="goods-classify">
+          <ul>
+            <li>首页<span></span></li>
+            <li class="list"><span class="left"></span>列表<span class="right"></span></li>
+            <li class="list1"><span class="left1"></span>产品详情<span class="right1"></span></li>
+          </ul>
+        </div>
+      </div> -->
+      <!-- 搜索路径 -->
+      <h-crumb></h-crumb>
+      <div class="img">
+        <img src="imgs/购物车.png" alt="">
+      </div>
+      <div class="goods-list">
+        <ul class="list-item">
+          <li class="th-check" @click='checkedAll()'>
+            <span class="tdspan" :class="{'check':checkFlag}" ></span>
+            <span class="select-txt">全选</span>
+          </li>
+          <li class="th-item">商品信息</li>
+          <li class="th-price">商品单价</li>
+          <li class="th-amount">数量</li>
+          <li class="th-sum">小计</li>
+          <li class="th-operate">操作</li>
+        </ul>
+        <ul class="list-result">
+          <li v-for="(shop,index) in shopList" class="shop-list">
+          	<div class="goods-box" :style="{background:shop.hidden?'rgb(249, 245, 245)':''}">
+              <span class="tdspan" :class="{'check':shop.checkFlag}"  v-if="shop.hidden" :style="{borderRadius:'50%',background:shop.hidden?'#eee':''}"></span>
+      				<span class="tdspan" :class="{'check':shop.checkFlag}"  v-else @click='selectShop(shop)'></span>
+              <!-- 商铺列表.html -->
+      				<a href="javascript:;" class="merchants-in-id" :merchants-in-id="shop.merchants_in_id">店铺：{{shop.shop_name}}&nbsp;&nbsp;(共{{shop.goods_count}}商品)</a>
+              <!-- <span>{{resetShopList}}</span> -->
+          	</div>
+            <div v-for='(goods,index) in shop.GoodsList' class="goods-item" :style="{background:goods.is_soldout=='1'?'rgb(249, 245, 245)':'' }"  >
+              <ul :is-soldout="goods.is_soldout" :goods-id="goods.goods_id" class="goods" :shopping-car-id="goods.shopping_car_id">
+                <li class="td-check"  >
+                  <div class="category_id" v-for="gsfList in goods.GoodsSpecificationList" :goods-specification-category-id="gsfList.goods_specification_category_id"></div>
+                  <!-- <img  class="select-img " src="imgs/uncheck.png" > -->
+                  <!-- <span class="tdspan" :class="{'check':goods.checkFlag,'checkdisabled':goods.is_soldout=='1'?'checkdisabled':goods.checkFlag}" @click='selectGoods(goods,shop)'></span> -->
+                  <span class="tdspan" :class="{'check':goods.checkFlag,'check':''}" :style="{borderRadius:'50%',background:goods.is_soldout=='1'?'#eee':'' }" v-if="goods.is_soldout=='1'"></span>
+                  <span class="tdspan" :class="{'check':goods.checkFlag}" :style="{borderRadius:'50%',background:goods.is_soldout=='1'?'#eee':'' }" v-else @click='selectGoods(goods,shop)'></span>
+                  <!-- <img src="imgs/组23.png" class="select-img hide_tab"> -->
+                </li>
+                <li class="td-item" @mouseover="overShow" @mouseout="outHide">
+                  <div class="img">
+                    <img src="imgs/bajiamache.png" alt="" v-if="goods.icon==''">
+                    <img :src="'http://122.112.209.170:8088'+goods.icon" alt="" v-else>
+                  </div>
+                  <div class="content">
+                    <h4>{{goods.name}}</h4>
+                    <p>{{goods.specificationsText}}</p>
+                    <div v-if="goods.is_soldout=='1'" class="is_soldout">该商品已下架</div>
+                    <div class="edit">
+                      <img src="imgs/修改-2.png" alt=""  :class="{show:showText,hide:hideText}">
+                    </div>  
+                  </div>
+                </li>
+                <li class="td-price">￥ <span>{{goods.buying_price }}</span></li>
+                <li class="td-amount">
+                  <span class="minus" @click='changeMoney(goods,-1,index)'>-</span>
+                  <input type="text" class="text-amount" 
+                  :value="goods.goods_count" 
+                  v-model.number='goods.goods_count' 
+                  :inventory="goods.inventory" 
+                  :shopping-car-id1="goods.shopping_car_id"
+               
+                  @keyup="changeMoney(goods,1,index)">
+                  <span class="plus" @click='changeMoney(goods,1,index)'>+</span>
+                </li>
+                <li class="td-sum">￥ <span> {{parseFloat(goods.buying_price*goods.goods_count).toFixed(2)}}</span></li>
+                <li class="td-operate">
+                  <div class="inner">
+                    <div class="del" @click='delGoods(goods.shopping_car_id)'>删除</div>
+                    <!-- <div class="favorite" @click="goodsCollectAdd(goods.goods_id)" :favorite="goods.goods_id">移入收藏</div> -->
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+          </li>
+        </ul>
+        <ul class="list-item-all">
+          <li class="select-all" @click='checkedAll()'>
+            <!-- <img src="imgs/组22.png" class="select-img" alt=""> -->
+            <span class="tdspan" :class="{'check':checkFlag}" ></span>
+            <span class="select-txt">全选</span>
+          </li>
+          <!-- <li class="join-cart">加入购物车</li> -->
+          <!-- <li class="un-checked" @click='checkeAll(false)'>取消全选</li> -->
+          <li class="delete" @click="deleteSelected()">删除</li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+      <div class="h1"></div>
+      <div class="order">
+        <!-- <ul class="favourable">
+          <li>
+            <div class="info-l">
+              【现金折扣CASH DISCOUNT】中国丝绸之路特惠   满  RMB999  减  RMB99
+            </div>
+            <div class="info-r">
+              <img src="imgs/组23.png" alt="">
+              <span>已参与</span>
+            </div>
+          </li>
+        </ul> -->
+        <div class="settlement-detail">
+          <h3>
+            <span>结算详情</span>
+            <img src="imgs/组24.png" alt="">
+          </h3>
+          <div>
+            商品总价（RMB3999.00）-活动优惠（RMB99.00）=商品金额总计（RMB3900.00）
+          </div>
+          <div class="clear"></div>
+          <div class="express">
+            邮费：免邮费  顺丰次日达
+          </div>
+          <div class="clear"></div>
+          <div class="payment-amount">
+            <div>
+             <!-- <span>{{total>3999?total-99:total}}</span>           -->
+             <span>{{parseFloat(totalPrice>3999?totalPrice-99:totalPrice).toFixed(2)}}</span>          
+            </div>
+            <div>
+              <span>支付金额</span>
+              <span>RMB</span>
+            </div>
+          </div>
+          <div class="clear"></div>
+          <div class="settlement">
+            <a href="javascript:;" @click="balance()">结算</a>
+            <!-- 选择支付方式.html -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 商城尾部 -->
+  <h-footer></h-footer>
+  <!-- 登录 -->
+  <h-login></h-login>
+  <script src="js/plugins/jquery/jquery.min.js"></script>
+  <script src='plugins/layer-v3.1.1/layer/layer.js'></script>
+  <script src='js/plugins/vue/vue.min.js'></script>
+  <script src="js/common/cookies.js"></script>
+  <script src="js/common/common.js"></script>
+  <script src="js/shopping_cart.js"></script>
+</body>
+</html>

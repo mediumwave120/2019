@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/ucenter.css">
+    <link rel="stylesheet" href="plugins/layer-v3.1.1/layer/theme/default/layer.css">
+    <link href="css/myPagination.css" rel="stylesheet" />
+    <link href="css/ucenter-add.css" rel="stylesheet" />
+   <style type="text/css">
+       
+.add {
+    overflow:hidden;
+}
+.add > .add-img {
+    float:left;margin-right:6px;
+}
+
+   </style>
+
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    <!--[if IE 9]>
+    <script src="//cdn.bootcss.com/geopattern/1.2.3/js/base64.min.js"></script>
+    <script src="//cdn.bootcss.com/geopattern/1.2.3/js/typedarray.min.js"></script>
+  <![endif]-->
+    <!-- 加载系统统一配置文件 -->
+    <!--[if lt IE 9]>
+    <style>
+      .ie{
+          position:fixed;
+          top:0;
+          right:0;
+          bottom:0;
+          left:0;
+          background:rgba(0,0,0,0.5);
+          z-index:100;
+      }
+      .ie-center{
+          position:absolute;
+          width: 580px;
+          height: 480px;
+          left:50%;
+          top:50%;
+          margin-top:-290px;
+          margin-left:-240px;
+          background:#FFE;
+      }
+    </style>
+    <div class='ie'>
+      <div class='ie-center'>
+        <h1 style='font-size:30px;color:red;margin:50px;'>同学，您当前的浏览器版本过低，可能存在隐患，建议升级浏览器</h1>
+         
+      </div>
+      
+    </div>
+  <![endif]-->
+    <!-- <h1>同学，您当前的浏览器版本过低，可能存在隐患，建议升级浏览器：</h1> -->
+</head>
+<body>
+    <!-- mall header -->
+    <h-header></h-header>
+    <!-- mall -->
+    <div class="container">
+       <!--  <div class="home">
+            <div class="goods-classify">
+                <ul>
+                    <li><span class=""></span><span class="center">首页</span><span class="right"></span></li>
+                    <li><span class="left"></span><span class="center">个人中心</span><span class="right"></span></li>
+                </ul>
+            </div>
+        </div> -->
+        <h-crumb></h-crumb>
+        <div class="content">
+            <div class="content-left">
+                <div class="userinfo">
+                    <div class="userimg">
+                        <img src="imgs/1.png">
+                    </div>
+                    <div class="username">
+                        <span></span>
+                    </div>
+                    <div class="sign">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="management">
+                        <ul class="nav nav-tabs">
+                            <li class="order">交易管理<span>TRANSACTION</span></li>
+                            <li class="active"><a href="#order" data-toggle="tab" id="Myorder">交易订单</a></li>
+                            <li><a href="#wallet" data-toggle="tab" id="Mymoney" >我的钱包</a></li>
+                            <li><a href="#collection" data-toggle="tab" id="mycollect">我的收藏</a></li>
+                            <li><a href="#admission" data-toggle="tab">商城入驻</a></li>
+                <!--            <li class="h50"><a href="#evaluate" data-toggle="tab">交易评价</a></li>-->
+
+                            <li class="order">客户服务<span>CUSTOMER</span></li>
+                            <li><a href="#refund_return" data-toggle="tab">退款及退货</a></li>
+                            <li><a href="#cmplaint" data-toggle="tab">投诉店铺</a></li>
+                            <li><a href="#report" data-toggle="tab" id="Myreport">举报商品</a></li>
+                            <li class="h50"><a href="#customer-service" data-toggle="tab">平台客服</a></li>
+
+                            <li class="order">资料管理<span>DATA</span></li>
+                            <li><a href="#info" data-toggle="tab">账户信息</a></li>
+                            <li><a href="#safe" data-toggle="tab">账户安全</a></li>
+                            <li><a href="#address" data-toggle="tab">收货地址</a></li>
+                            <li><a href="#footprint" data-toggle="tab" id="footprints">我的足迹</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="content-right tab-content ">
+                <!-- 交易管理 -->
+                <!-- 交易订单 -->
+                <div class="content-order tab-pane fade  in active" id="order">
+                    <h2>订单中心</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Order center<span></span></p>
+                    <ul class="content-tab nav-tabs removeli" >
+                        <li class="active all"><a href="#all-order" data-toggle="tab" onclick="Order(1,'')">全部</a> <span></span></li>
+                        <li><a href="#all-order" data-toggle="tab" onclick="Order(1,1)">待付款</a> <span></span></li>
+                        <li><a href="#all-order" data-toggle="tab" onclick="Order(1,2)">待发货</a> <span></span></li>
+                        <li><a href="#all-order" data-toggle="tab" onclick="Order(1,3)">待收货</a> <span></span></li>
+                        <li><a href="#all-order" data-toggle="tab" onclick="Order(1,4)">待评价</a> <span></span></li>
+                        <!--            <li><a href="#pending-payment"  data-toggle="tab" onclick="Order(1)">待付款</a> <span></span></li>
+                    <li><a href="#pending-delivery" data-toggle="tab" onclick="Order(2)">待发货</a> <span></span></li>
+                    <li><a href="#pending-goods" data-toggle="tab" onclick="Order(3)">待收货</a> <span></span></li>
+                    <li><a href="#pending-evaluate" data-toggle="tab" onclick="Order(4)">待评价</a> <span></span></li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 全部 -->
+                        <div class="goods-list tab-pane fade in active" id="all-order">
+                            <!-- 默认 -->
+                            <ul class="list-order">
+                                <li class="th-item">商品信息</li>
+                                <li class="th-price">商品单价</li>
+                                <li class="th-amount">数量</li>
+                                <li class="th-payment">付款</li>
+                                <li class="th-state">订单状态</li>
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-order-result">
+                                <!--<li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount"></li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">待付款</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="payment">付款</div>
+                                                <div class="cancle">取消订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </li>-->
+
+
+                            </ul>
+                            <!-- 物流详情 -->
+                            <!-- <div class="logistics-detail">
+                                <ul class="logistics-hd">
+                                    <li class="th-logistics">物流信息</li>
+                                </ul>
+                                <div class="logistics-bd">
+                                    <div class="logistics-icon">
+                                        <ul>
+                                            <li class="step-1">发货</li>
+                                            <li class="step-2">运输</li>
+                                            <li class="step-3">派送</li>
+                                            <li class="step-4">签收</li>
+                                        </ul>
+                                    </div>
+                                    <div id="status-list">
+                                        <h3 class="title">您的快件正在运输中，请耐心等待...</h3>
+                                        <ul class="status-list">
+                                            <li>
+                                                <span class="date">2018-06-11</span>
+                                                <span class="week">周一</span>
+                                                <span class="time">14:38:55</span>
+                                                <span class="text">卖家发货</span>
+                                            </li>
+                                            <li>
+                                                <span class="date">2018-06-12</span>
+                                                <span class="week">周二</span>
+                                                <span class="time">10:38:55</span>
+                                                <span class="text">【苍南灵溪点部】的收件员【灵溪点部59917507】已收件</span>
+                                            </li>
+                                            <li>
+                                                <span class="date">2018-06-13</span>
+                                                <span class="week">周三</span>
+                                                <span class="time">15:38:55</span>
+                                                <span class="text">【由【苍南】发往【温州分拨中心】</span>
+                                            </li>
+                                            <li class="new">
+                                                <span class="date">2018-06-14</span>
+                                                <span class="week">周四</span>
+                                                <span class="time">5:38:55</span>
+                                                <span class="text">【由【温州分拨中心】发往【上海集散】</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="logistics-info">
+                                        <ul>
+                                            <li>
+                                                <span>运单号码：</span><span>888107013720993171</span>
+                                            </li>
+                                            <li>
+                                                <span>物流公司：</span><span>申通快递</span>
+                                            </li>
+                                            <li>
+                                                <span>官方电话：</span><span>123456</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>-->
+                            <!-- 订单详情 -->
+                            <div class="order-detail">
+                                <ul class="order-hd">
+                                    <li class="th-logistics">订单详情</li>
+                                </ul>
+                                <div class="order-bd">
+                                    <div class="order-num">
+                                        <span>订单号：</span>
+                                        <span id="order_id"></span>
+                                    </div>
+                                    <ul class="goods-detail">
+                                        <li class="th-item">
+                                            <ul>
+                                                <li>商品信息</li>
+                                                <li>订单金额</li>
+                                                <li>付款时间</li>
+                                                <li>操作</li>
+                                            </ul>
+                                        </li>
+                                        <li class="td-item1" id="ordergoodslist">
+                                            <ul>
+                                                <li>
+                                                    <div class="goods-img">
+                                                        <img src="imgs/1.png" alt="">
+                                                    </div>
+                                                    <div>毛毛商品毛毛商品毛毛商品</div>
+                                                </li>
+                                                <li>799.00元</li>
+                                                <li><span>2018-10-08 13.09.27</span></li>
+                                                <li><a id="apple"></a> </li>
+                                            </ul>
+                                        </li>
+                          <!--              <li class="td-item2">
+                                            <ul>
+                                                <li>
+                                                    <div class="step1">
+                                                        <span>下单</span>
+                                                        <span>2018-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step2">
+                                                        <span>付款</span>
+                                                        <span>2019-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step3">
+                                                        <span>配货</span>
+                                                        <span>2019-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step4">
+                                                        <span>交易成功</span>
+                                                        <span>2019-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step5">
+                                                        <span>评价</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            
+                                        </li>-->
+                                        <li class="td-item3">
+                                            <span>订单状态：</span>
+                                            <span id="order_state"></span>
+                                        </li>
+                                    </ul>
+                                    <div class="modify">
+                                        <h3>收货信息</h3>
+                                        <ul>
+                                            <li>
+                                                <span>姓      名：</span>
+                                                <input type="text" id="order_name" readonly>
+                                            </li>
+                                            <li>
+                                                <span>收货地址：</span>
+                                                <input type="text" value="" id="order_address" style="width:400px;" readonly>
+                                            </li>
+                                            <li>
+                                                <span>联系电话：</span>
+                                                <input type="text" id="contact_tel" readonly>
+                                            </li>
+                                           <!-- <li>
+                                                <span>支付方式：</span>
+                                                <input type="text" value="在线支付">
+                                            </li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="pagination  " id="pagination"></ul>
+                        </div>
+                        <!-- 待付款 -->
+                        <div class="goods-list tab-pane fade" id="pending-payment">
+                            <ul class="list-item">
+                                <li class="th-item">商铺信息</li>
+                                <li class="th-price">商品单价</li>
+                                <li class="th-amount">数量</li>
+                                <li class="th-payment">付款</li>
+                                <li class="th-state">订单状态</li>
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">待付款</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="payment">付款</div>
+                                                <div class="cancle">取消订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">待付款</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="payment">付款</div>
+                                                <div class="cancle">取消订单</div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="paginations">
+                                <ul>
+                                    <li>上一页</li>
+                                    <li>1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>.....</li>
+                                    <li>99</li>
+                                    <li>下一页</li>
+                                    <li>跳转到<input type="text" value="1">页</li>
+                                    <li>跳转</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 待发货 -->
+                        <div class="goods-list tab-pane fade" id="pending-delivery">
+                            <ul class="list-item">
+                                <li class="th-item">商铺信息</li>
+                                <li class="th-price">商品单价</li>
+                                <li class="th-amount">数量</li>
+                                <li class="th-payment">付款</li>
+                                <li class="th-state">订单状态</li>
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">待发货</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="view-order">查看订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="paginations">
+                                <ul>
+                                    <li>上一页</li>
+                                    <li>1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>.....</li>
+                                    <li>99</li>
+                                    <li>下一页</li>
+                                    <li>跳转到<input type="text" value="1">页</li>
+                                    <li>跳转</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 待收货 -->
+                        <div class="goods-list tab-pane fade" id="pending-goods">
+                            <ul class="list-item">
+                                <li class="th-item">商铺信息</li>
+                                <li class="th-price">商品单价</li>
+                                <li class="th-amount">数量</li>
+                                <li class="th-payment">付款</li>
+                                <li class="th-state">订单状态</li>
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">已发货</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="payment">确认收货</div>
+                                                <div class="cancle">查看物流</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="paginations">
+                                <ul>
+                                    <li>上一页</li>
+                                    <li>1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>.....</li>
+                                    <li>99</li>
+                                    <li>下一页</li>
+                                    <li>跳转到<input type="text" value="1">页</li>
+                                    <li>跳转</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 待评价 -->
+                        <div class="goods-list tab-pane fade" id="pending-evaluate">
+                            <ul class="list-item">
+                                <li class="th-item">商铺信息</li>
+                                <li class="th-price">商品单价</li>
+                                <li class="th-amount">数量</li>
+                                <li class="th-payment">付款</li>
+                                <li class="th-state">订单状态</li>
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">已收货</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="btn-evaluate">评价</div>
+                                                <div class="cancle">删除订单</div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                    </ul>
+                                    <div class="evaluate">
+                                        <div class="goods-score">
+                                            <span >商品评分：</span>
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png" >
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_k.png" >
+                                        </div>
+                                        <div class="evaluate-content">
+                                            <span>评论内容：</span>
+                                            <textarea class="txt" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="Huitextarealength(this)" placeholder="宝贝满足您的期待吗？说说您的使用心得，分享给想买的他们吧">宝贝满足您的期待吗？说说您的使用心得，分享给想买的他们吧</textarea>
+                                            <p class="textarea-numberbar"><em class="textarea-length">0</em>/<am>200</am></p>
+                                        </div>
+                                        <div class="evaluate-pic">
+                                            <span>评论图片：</span>
+                                            <ul>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="" />
+                                                    <input type="file">
+                                                    <div class="imgs">添加2之5张图片</div>
+                                                </li>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="">
+                                                    <input type="file">
+                                                </li>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="">
+                                                    <input type="file">
+                                                </li>
+                                            </ul>
+                                            <div class="btn-release">
+                                                发布评价
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">已收货</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="btn-evaluate">评价</div>
+                                                <div class="cancle">删除订单</div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                    </ul>
+                                    <div class="evaluate">
+                                        <div class="goods-score">
+                                            <span>商品评分：</span>
+                                            <img src="imgs/star_s.png" alt="">
+                                            <img src="imgs/star_s.png" alt="">
+                                            <img src="imgs/star_s.png" alt="">
+                                            <img src="imgs/star_s.png" alt="">
+                                            <img src="imgs/star_k.png" alt="">
+                                        </div>
+                                        <div class="evaluate-content">
+                                            <span>评论内容：</span>
+                                            <textarea class="txt" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="Huitextarealength(this)"></textarea>
+                                            <p class="textarea-numberbar"><em class="textarea-length">0</em>/<am>200</am></p>
+                                        </div>
+                                        <div class="evaluate-pic">
+                                            <span>评论图片：</span>
+                                            <ul>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="">
+                                                    <input type="file">
+                                                    <div class="imgs">添加2之5张图片</div>
+                                                </li>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="">
+                                                    <input type="file">
+                                                </li>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="">
+                                                    <input type="file">
+                                                </li>
+                                            </ul>
+                                            <div class="btn-release">
+                                                发布评价
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 退款/售后 -->
+                        <div class="goods-list tab-pane fade" id="refund">
+                            <ul class="list-item">
+                                <li class="th-item">商铺信息</li>
+                                <li class="th-price">商品单价</li>
+                                <li class="th-amount">数量</li>
+                                <li class="th-payment">付款</li>
+                                <li class="th-state">订单状态</li>
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">待付款</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="payment">付款</div>
+                                                <div class="cancle">取消订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-amount">1
+                                        </li>
+                                        <li class="td-payment">5999.00</li>
+                                        <li class="td-state">待付款</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="payment">付款</div>
+                                                <div class="cancle">取消订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="paginations">
+                                <ul>
+                                    <li>上一页</li>
+                                    <li>1</li>
+                                    <li>2</li>
+                                    <li>3</li>
+                                    <li>4</li>
+                                    <li>5</li>
+                                    <li>.....</li>
+                                    <li>99</li>
+                                    <li>下一页</li>
+                                    <li>跳转到<input type="text" value="1">页</li>
+                                    <li>跳转</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 我的钱包 -->
+                <div class="content-wallet tab-pane fade" id="wallet">
+                    <h2>我的钱包</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>My wallet<span></span></p>
+                    <ul class="content-tab nav-tabs my_money">
+                        <li class="active"><a href="#detail" data-toggle="tab" >消费明细</a> <span></span></li>
+                        <li><a href="#balance" data-toggle="tab">余额提现</a> <span></span></li>
+                        <li><a href="#recharge" data-toggle="tab">在线充值</a> <span></span></li>
+                        <li><a href="#apply" data-toggle="tab">申请提现</a></li>
+                        <li class="fl-right">
+                            <span>余额:</span>
+                            <span id="Banace"></span>
+                            <span>(元）</span>
+                        </li>
+                    </ul>
+                    <div class="money_open">
+                        您当前未开通钱包功能，开通钱包请点击<a href="javascript:" data-toggle="modal" data-target="#OpenMyMoney" >《开通钱包》</a>
+                    </div>
+                    <div class="tab-content">
+                        <!-- 充值明细 -->
+                        <div class="goods-list tab-pane fade in active" id="detail">
+                            <ul class="list-item">
+                                <li class="th-num">充值单号</li>
+                                <li class="th-time">创建时间</li>
+                                <li class="th-mode">支付方式</li>
+                                <li class="th-amount">消费金额(元)</li>
+                                <li class="th-state">状态</li>
+                            </ul>
+                            <ul class="list-result" id="TupUplist">
+                                <li>
+                                    <ul>
+                                        <li class="td-num">201807101000</li>
+                                        <li class="td-time">2018年7月11日</li>
+                                        <li class="td-mode">绑卡充值</li>
+                                        <li class="td-amount">5999.00</li>
+                                        <li class="td-state">已完成</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                           
+                                <ul class="pagination" id="tupuppaging">
+                            
+                                </ul>
+                      
+                        </div>
+                        <!-- 余额提现 -->
+                        <div class="goods-list tab-pane fade" id="balance">
+                            <ul class="list-item">
+                                <li class="th-num">申请单号</li>
+                                <li class="th-time">申请时间</li>
+                                <li class="th-card">银行卡号</li>
+                                <li class="th-amount">提现金额(元)</li>
+                                <li class="th-state">状态</li>
+                            </ul>
+                            <ul class="list-result" id="withdrawal">
+                                <li>
+                                    <ul>
+                                        <li class="td-num">201807101000</li>
+                                        <li class="td-time">2018年7月11日</li>
+                                        <li class="td-card">1000 2000 3000 1001 22112</li>
+                                        <li class="td-amount">5999.00</li>
+                                        <li class="td-state">已到账</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="pagination" id="withpaging"></ul>
+                        </div>
+                        <!-- 在线充值 -->
+                        <div class="goods-list tab-pane fade" id="recharge">
+                            <ul class="list-item">
+                                <li class="th-recharge">在线充值</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <div class="step1">
+                                        <div class="form-group bankCardshow" style="">
+                                            <div class="id_card" style="font-size:20px"></div>
+                                            <a id="Bind_Id" style="display:none"></a>
+                                            <div>
+                                                <label>充值金额：</label>
+                                                <input type="text" class="form-control" id="txn_amt" placeholder="请输入您要充值的金额"/>
+                                            </div>
+                                            <div ><input  type="button" value="确定充值" class="btn  btn-success" data-toggle="modal" data-target="#Top_Up" /></div>
+                                        </div>
+                                        <!--<div class="input">
+                                            <input type="text" placeholder="请输入要充值的金额"></div>-->
+                                        <div class="form-group btn-hideg">
+                                            您还没有绑定银行卡，《<a href="javascript:" class="btn-confirm">点我绑卡</a>》确认进行绑卡操作！
+                                        </div>
+                                        <!-- <div class="confirm">
+                                            <span class="btn-confirm">确认</span>
+                                        </div>-->
+                                    </div>
+                                    <div class="step2">
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-2">姓名</label><input type="text" id="bank_name" placeholder ="您本人的姓名" class="form-control col-lg-10" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label  class="control-label col-lg-2">银行卡号</label><input type="text" id="bank_card" placeholder ="您本人的银行卡号" class="form-control col-lg-10"  />
+                                        </div>
+                                        <div class="form-group">
+                                            <label  class="control-label col-lg-2">银行</label><select class="form-control col-lg-10" id="bankcard">
+                                              
+                                                    <option value="307584007998" >平安银行(PAB)</option>
+                                                    <option value="403100000004" >中国邮政储蓄银行(PSBC)</option>
+                                                    <option value="325290000012" >上海银行(SHB)</option>
+                                                    <option value="310290000013" >浦发银行(SPDB)</option>
+                                                    <option value="313100000013" >北京银行(BOB)</option>
+                                                    <option value="306581000003" >广发银行(CGB)</option>
+                                                    <option value="102100099996" >中国工商银行(ICBC)</option>
+                                                    <option value="103100000026" >中国农业银行(ABC)</option>
+                                                    <option value="105100000017" >中国建设银行(CCB)</option>
+                                                    <option value="104100000004" >中国银行(BOC)</option>
+                                                    <option value="301290000007" >中国交通银行(BCOM)</option>
+                                                    <option value="309391000011" >兴业银行(CIB)</option>
+                                                    <option value="302100011000" >中信银行(CITIC)</option>
+                                                    <option value="303100000006" >中国光大银行(CEB)</option>
+                                                  
+                                            
+                                                             </select>
+                                        </div>
+                                          <div class="form-group">
+                                            <label  class="control-label col-lg-2">身份证号</label><input type="text" id="bank_number" placeholder ="您本人的身份证号" class="form-control col-lg-10"  />
+                                        </div>
+                                          <div class="form-group">
+                                            <label  class="control-label col-lg-2">手机号</label><input type="text" id="bank_phone" placeholder ="请输入您银行预留手机号" class="form-control col-lg-10"  />
+                                        </div>
+                                         <div class="form-group">
+                                                 <label  class="control-label col-lg-5"></label>
+                                         <input type="button" value="确认" class="btn  btn-success  col-lg-1 " onclick="BindCard()"/>
+                                        </div>
+                                       <!-- <dl>
+                                            <dt>支付提交</dt>
+                                            <dd>查看充值记录可以通过我的钱包进行查看</dd>
+                                        </dl>
+                                        <div>
+                                            <div class="recharge-num">
+                                                <dl>
+                                                    <dt>充值单号：<span>23058397293973484575</span></dt>
+                                                    <dd>您已申请我的钱包充值，请立即在线支付！充值金额：<span>1000</span></dd>
+                                                </dl>
+                                            </div>
+                                            <div class="recharge-mode nav-tabs">
+                                                <a href="#mode1" class='active' data-toggle="tab">钱包推荐</a>
+                                         <!--       <a href="#mode2" data-toggle="tab">微信支付</a>-->
+                                           <!-- </div>
+                                            <div class="recharge-list">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade in active" id='mode1'>
+                                                        <ul>
+                                                            <li><a href="#">华夏银行</a></li>
+                                                            <li><a href="#">中国银行</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="mode2">
+                                                        <img src="imgs/新品推荐.png" alt="111111">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-payment">
+                                            <a href="#">确认支付</a>
+                                        </div>-->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 申请提现 -->
+                        <div class="goods-list tab-pane fade " id="apply">
+                            <ul class="list-item">
+                                <li class="th-recharge">申请提现</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <div class="withdraw-money">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle select"
+                                                data-toggle="dropdown">
+                                                请选择到账的地方
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#" class="bank-card">银行卡</a></li>
+                                          <!--      <li><a href="#" class="wechat">微信</a></li>-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="list">
+                                        <ul>
+                                            <li id="T_bank"></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <a id="paybanknumber" style="display:none;"></a>
+                                    <div class="wechat-num">
+                                        <span>微信号</span>
+                                        <input type="text" value="请输入微信号">
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>提现金额：</span>
+                                    <input type="text" value="" id="OutComeMoney">元
+                                    <div>
+                                        <input type="button" value="提现" data-toggle="modal" data-target="#T_PayPassWord" onclick="CalculatTionFee()">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 我的收藏 -->
+                <div class="content-collection tab-pane fade" id="collection">
+                    <h2>我的收藏</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>My Collection<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#goods-collection" data-toggle="tab" id="goodscolle">商品收藏</a> <span></span></li>
+                        <li><a href="#shop-collection" data-toggle="tab" id="goodscolles">店铺收藏</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 商品收藏 -->
+                        <div class="goods-list tab-pane fade in active" id="goods-collection">
+                            <ul class="list-item">
+                                <li class="th-item">商品信息</li>
+                                <li class="th-follower">收藏人数</li>
+                                <li class="th-manage">管理</li>
+                                <li class="th-del" ><a  href="javascript: void(0);" onclick="DeleteGoodsColleBll()" style="color:#fff;">删除</a></li>
+                                <li class="th-all"><a href="javascript: void(0);" onclick="QGoodscheckFunction()"  style="color:#fff;">全选</a></li>
+                            </ul>
+                            <ul class="list-result" id="goodscollection">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-follower">1000</li>
+                                        <li class="td-manage">
+                                            <a href="#">进店铺</a>
+                                            <a href="#">分享</a>
+                                        </li>
+                                        <li class="td-del">
+                                            <a href="#">删除</a>
+                                        </li>
+                                        <li class="td-all">
+                                            <img src="imgs/组22.png" class="select-img" alt="">
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                              <ul class="pagination" id="collectpaging"></ul>
+                        </div>
+                        <!-- 店铺收藏 -->
+                        <div class="goods-list tab-pane fade" id="shop-collection">
+                            <ul class="list-item">
+                                <li class="th-item">商品信息</li>
+                                <!--<li class="th-follower">收藏人数</li>-->
+                                <li class="th-manage">管理</li>
+                                <li class="th-del"><a  href="javascript: void(0);" onclick="DeleteShopColleBll()" style="color:#fff;" >删除</a></li>
+                                <li class="th-all"><a href="javascript: void(0);" onclick="QcheckFunction()"  style="color:#fff;">全选</a></li>
+                            </ul>
+                            <ul class="list-result" id="Merchants">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-follower">1000</li>
+                                        <li class="td-manage">
+                                            <a href="#">进店铺</a>
+                                            <a href="#">取消关注</a>
+                                        </li>
+                                        <li class="td-del">
+                                            <a href="#">删除</a>
+                                        </li>
+                                        <li class="td-all">
+                                            <img src="imgs/组22.png" class="select-img" alt="">
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 商城入驻 -->
+                <div class="content-admission tab-pane fade " id="admission">
+                    <h2>商城入驻</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Shop enter<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#shop-enter" data-toggle="tab">商城入驻</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 商城入驻 -->
+                        <div class="goods-list tab-pane fade in active" id="shop-enter">
+                            <div class="notice">
+                                <h3>注意事项</h3>
+                                <div>
+                                    以下所需要上传的电子版资质文件仅支持JPG\GIF\PNG格式图片，大小请控制在1M之内。
+                                </div>
+                            </div>
+                            <div class="item">
+                                <ul>
+                                       <!-- <li>
+                                        <label for="business-license">店铺Logo：</label>
+                                       <div class="select-pic">
+                                            <img src="imgs/bg.png" alt="请上传店铺logo图片" class="business-license-img">
+                                        </div>-
+                                        <input type="file" title="请上传店铺logo图片"  id="shop_images" onchange="UplodShopImage()">
+                                <div class="clear"></div>
+                                    </li>-->
+                                    <li class="shop-logo">
+                                        <label for="shop-license">店铺Logo：</label>
+                                        <div class="select-pic">
+                                            <img src="imgs/loginbj1.png" alt="请上传店铺logo" class="shop-logo">
+                                        </div>
+                                        <input type="file" title="请上传店铺logo" class="" id="shop_images" onchange="UplodShopImage()">
+                                        <div class="clear"></div>
+                                    </li>
+                                    <li>
+                                        <label for="real-name">真实姓名：</label>
+                                        <input type="text" id="zname">
+                                    </li>
+                                    <li>
+                                        <label for="card-no">身份证号码：</label>
+                                        <input type="text" id="id_number">
+                                    </li>
+                                    <li class="code">
+                                        <label for="code">组织机构代码：</label>
+                                        <input type="text" id="organization_code">
+                                    </li>
+                                    <li>
+                                        <label for="shop-name" >店铺名称：</label>
+                                        <input type="text" id="shop_name">
+                                    </li>
+                                 <!--   <li>
+                                        <label for="login-account">设置登录账户：</label>
+                                        <input type="text">
+                                    </li>-->
+                                    <li>
+                                        <label for="shop-leading-official-name">店铺负责人姓名：</label>
+                                        <input type="text" id="charge_people_name">
+                                    </li>
+                                    <li>
+                                        <label for="shop-leading-official-tel">店铺负责人联系电话：</label>
+                                        <input type="text" id="charge_people_tel">
+                                    </li>
+                                    <li>
+                                        <label for="manange-type">经营类型：</label>
+                                        <select name="" id="BusinessType">
+                                           
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <label for="manage-range">经营范围：</label>
+                                        <select name="" id="BusinessScope">
+                                           
+                                        </select>
+                                    </li>
+                                    <li class="file">
+                                        <label for="business-license">营业执照：</label>
+                                        <div class="select-pic">
+                                            <img src="imgs/bg.png" alt="请上传营业执照图片" class="business-license-img">
+                                        </div>
+                                        <input type="file" title="请上传营业执照图片" class="business-license" id="Imagess" onchange="UplodImage()">
+                                        <div class="clear"></div>
+                                    </li>
+                                   
+                                    <li>
+                                        <label></label>
+                                        <input type="radio" name="colors" id="personal" value="1" checked>
+                                        <label for="personal" class="apply">个人店铺申请</label>
+                                    </li>
+                                    <li>
+                                        <label></label>
+                                        <input type="radio" name="colors" id="company" value="2">
+                                        <label for="company" class="apply">企业店铺申请</label>
+                                    </li>
+                                    <li>
+                                        <label></label>
+                                        <input type="button" value="提交" class="shop-enter" onclick="BtnTenants()">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 交易评价 -->
+                <div class="content-evaluate tab-pane fade" id="evaluate">
+                    <h2>交易评价</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Evaluate<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#deal-evaluate" data-toggle="tab">交易评价</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 交易评价 -->
+                        <div class="goods-list tab-pane fade in active" id="deal-evaluate">
+                            <ul class="list-item">
+                                <li class="th-evaluate">交易评价</li>
+                            </ul>
+                            <ul class="list-result">
+                                <li>
+                                    <div class="result-left">
+                                        <img src="imgs/1.png" alt="">
+                                    </div>
+                                    <div class="result-right">
+                                        <h3>商品的标题</h3>
+                                        <p>
+                                            我的评价我是闻风丧胆我送的品味就是能看我都将为大家送温暖人还是你催我不猝死被称为出我的评价我是闻风丧胆我送的品味就是能看到未来会死的我我都将为大家送温暖人还是你催我不猝死被称为出对策就是充值内测
+                                        </p>
+                                        <div>
+                                            <span>评价次数</span><span>3444</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 客户服务 -->
+                <!-- 退款及退货 -->
+                <div class="content-return tab-pane fade" id="refund_return">
+                    <h2>退款及退货</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Refund and return<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#all-refund" data-toggle="tab">退款/售后</a> <span></span></li>
+                <!--<li><a href="#return-apply" data-toggle="tab">退货申请</a></li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 全部  -->
+                        <div class="goods-list tab-pane fade  in active" id="all-refund">
+                            <ul class="list-item">
+                                <li class="th-item">商铺信息</li>
+                                <li class="th-price">退款金额(元)</li>
+                                <li class="th-state">申请状态</li>
+                                <!--<li class="th-confirm">平台确认</li>-->
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result" id="refundList">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-state">申请中</li>
+                                        <li class="td-confirm">正在确认</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="cancle-order">取消订单</div>
+                                                <div class="view-order">查看订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                     <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-state">申请中</li>
+                                        <li class="td-confirm">正在确认</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="cancle-order">取消订单</div>
+                                                <div class="view-order">查看订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                     <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-price">5999.00</li>
+                                        <li class="td-state">申请中</li>
+                                        <li class="td-confirm">正在确认</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="cancle-order">取消订单</div>
+                                                <div class="view-order">查看订单</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                              
+                             <ul class="pagination" id="refundpaging"></ul>
+                        </div>
+                        <!-- 退货申请 -->
+                        <!-- <div class="goods-list tab-pane fade" id="return-apply">
+                            <ul class="list-item">
+                                <li class="th-evaluate">退货申请</li>
+                            </ul>
+                            <div class="return-info">
+                                <div class="order-num">
+                                    <span>订单号：</span>
+                                    <span>1131008195000267</span>
+                                </div>
+                                <ul class="return-goods">
+                                    <li class="th-item">
+                                        <ul>
+                                            <li>商品信息</li>
+                                            <li>退款金额</li>
+                                            <li>申请时间</li>
+                                        </ul>
+                                    </li>
+                                    <li class="td-item1">
+                                        <ul>
+                                            <li>
+                                                <div class="goods-img">
+                                                    <img src="imgs/1.png" alt="">
+                                                </div>
+                                                <div>毛毛商品毛毛商品毛毛商品</div>
+                                            </li>
+                                            <li>799.00元</li>
+                                            <li>2018-10-08 13.09.27</li>
+                                        </ul>
+                                    </li>
+                                    <li class="td-item2">
+                                        <span>退款原因：</span>
+                                        <input type="text" placeholder="请填写">
+                                    </li>
+                                    <li class="td-item3">
+                                        <span>退款说明：</span>
+                                        <input type="text" placeholder="选填">
+                                    </li>
+                                    <li class="td-item4">
+                                        <span>上传凭证：</span>
+                                        <div class="upload">
+                                            <img src="imgs/webwxgetmsgimg.jpg" alt="111">
+                                            <input type="file">
+                                            <div>
+                                                <span>上传凭证</span>
+                                                <span>(最多3张)</span>
+                                            </div>
+                                        </div>
+                                        <div class="upload">
+                                            <img src="imgs/webwxgetmsgimg.jpg" alt="111">
+                                            <input type="file">
+                                            <div>
+                                                <span>上传凭证</span>
+                                                <span>(最多3张)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="modify">
+                                    <h3>收货信息【修改】</h3>
+                                    <ul>
+                                        <li>
+                                            <span>姓      名：</span>
+                                            <input type="text" value="张岩的小金库">
+                                        </li>
+                                        <li>
+                                            <span>收货地址：</span>
+                                            <input type="text" value="上海 嘉定区金沙江西路1555弄">
+                                        </li>
+                                        <li>
+                                            <span>联系电话：</span>
+                                            <input type="text" value="189****1891">
+                                        </li>
+                                        <li>
+                                            <span>支付方式：</span>
+                                            <input type="text" value="在线支付">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>-->
+                    </div>
+                </div>
+                <!-- 商品投诉 -->
+                <div class="content-cmplaint tab-pane fade" id="cmplaint">
+                    <h2>店铺投诉</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Commodity complaint<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#goods-cmplaint" data-toggle="tab">店铺投诉</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 商品投诉 -->
+                        <div class="goods-list tab-pane fade in active" id="goods-cmplaint">
+                            <ul class="list-item">
+                                <li class="th-item">投诉图片</li>
+                                <li class="th-theme">联系电话</li>
+                                  <li class="th-state">投诉内容</li>
+                                <li class="th-time">投诉时间</li>
+                              
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result" id="report_list">
+                                <li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-theme">商品和描述不一致</li>
+                                        <li class="td-time">2018年4月12日</li>
+                                        <li class="td-state">进行中</li>
+                                        <li class="td-operate">
+                                            <div class="del">删除</div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <ul class="pagination" id="ReportShopPagin"></ul> 
+                        </div>
+                    </div>
+                </div>
+                <!-- 违规举报 -->
+                <div class="content-report tab-pane fade" id="report">
+                    <h2>违规举报</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Violation Report<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#violation-report" data-toggle="tab">违规举报</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 违规举报 -->
+                        <div class="goods-list tab-pane fade in active" id="violation-report">
+                            <ul class="list-item">
+                                <li class="th-item">相关商品</li>
+                                <li class="th-operate">联系电话</li>
+                                <li class="th-operate">举报内容</li>
+                                <li class="th-operate">举报时间</li>
+                         <!--       <li class="th-operate">操作</li>-->
+                            </ul>
+                            <ul class="list-result" id="reportgoods">
+                                <!--<li>
+                                    <ul>
+                                        <li class="td-item">
+                                            <div class="img">
+                                                <img src="imgs/1.png" alt="">
+                                            </div>
+                                            <div class="con">
+                                                <h4>红酒整箱张裕 葡萄酒赤霞珠干红【整箱6瓶】</h4>
+                                                <p>整箱24只</p>
+                                            </div>
+                                        </li>
+                                        <li class="td-time">2018年4月12日</li>
+                                        <li class="td-result">已处理</li>
+                                        <li class="td-operate">
+                                            <div class="del">删除</div>
+                                        </li>
+                                    </ul>
+                                </li>-->
+
+                            </ul>
+                            <ul class="pagination" id="reportgoodspagin"></ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 平台客服 -->
+                <div class="content-customer-service tab-pane fade" id="customer-service">
+                    <h2>平台客服</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Customer service<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#violation-report" data-toggle="tab">意见反馈</a></li>
+                    </ul>
+                    <!-- 平台客服 -->
+                    <div class="tab-content">
+                        <div class="goods-list tab-pane fade in active" id="violation-report">
+                            <div class="opinion">
+                                <textarea name="" id="feedback_content" placeholder="积极提供有限的反馈意见"></textarea>
+                            </div>
+                            <div class="add">
+                                <h3>添加图片(最多四张)</h3>
+                                <div class="add-img">
+                                    <input type="file" class="service" id="service" onchange="ServiceImage(this)">
+                                    <img src="imgs/plus.jpg" alt="" class="service_image" >
+                                </div>
+                                 <div class="add-img">
+                                    <input type="file" class="service1" id="service1" onchange="ServiceImage(this)">
+                                    <img src="imgs/plus.jpg" alt="" class="service_image1" >
+                                </div>
+                                 <div class="add-img">
+                                    <input type="file" class="service2" id="service2" onchange="ServiceImage(this)">
+                                    <img src="imgs/plus.jpg" alt="" class="service_image2" >
+                                </div>
+                                  <div class="add-img">
+                                    <input type="file" class="service3" id="service3" onchange="ServiceImage(this)">
+                                    <img src="imgs/plus.jpg" alt="" class="service_image3" >
+                                </div>
+                            </div>
+                            <div class="contact">
+                                <h3>添加联系方式(可选)</h3>
+                                <div class="tel-qq-email">
+                                    <input type="text" placeholder="电话/QQ/邮箱" id="feedback_contact">
+                                </div>
+                            </div>
+                            <div class="btn-submit">
+                                <input type="button" value="提交" onclick="btnFeedBack()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 资料管理 -->
+                <!-- 账户信息 -->
+                <div class="content-info tab-pane fade" id="info">
+                    <h2>账户信息</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Account information<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#basic-info" data-toggle="tab">基本信息</a><span></span></li>
+                        <li><a href="#change-head-portrait" data-toggle="tab">更换头像</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 基本信息 -->
+                        <div class="goods-list tab-pane fade in active" id="basic-info">
+                            <div class="user-img">
+                              
+                            </div>
+                            <div class="user-info">
+                                <dl>
+                                    <dt>用户名称：</dt>
+                                    <dd>
+                                        <input type="text" value="张岩的小金库" id="user_name"></dd>
+                                </dl>
+                              <!--  <dl>
+                                    <dt>密码：</dt>
+                                    <dd>
+                                        <input type="text" value="12345" id="password"></dd>
+                                </dl>-->
+                                <dl>
+                                    <dt>个性签名：</dt>
+                                    <dd>
+                                        <input type="text" value="" id="sign"></dd>
+                                </dl>
+                                <dl>
+                                    <dt></dt>
+                                    <dd class="modify">
+                                        <input type="button" value="保存修改" onclick="InforMation()"></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <!-- 更换头像 -->
+                        <div class="goods-list tab-pane fade " id="change-head-portrait">
+                            <div class="head-preview">头像预览： </div>
+                            <div class="user-info">
+                                <div class="user-img">
+                                    <img src="imgs/1.png" alt="">
+                                    <p>完善个人信息资料，上传头像图片有助于您结识更多朋友</p>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="change-head"><span>更换头像：</span></div>
+                            <div class="btn-upload">
+                                <input type="button" value="图片上传">
+                                <input type="file" class="upload" id="user_logo" onchange="UploadPicture()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 账户安全 -->
+                <div class="content-safe tab-pane fade " id="safe">
+                    <h2>账户安全</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>Account security<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#account-info" data-toggle="tab">您的账户信息</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 账户安全 -->
+                        <div class="goods-list tab-pane fade in active" id="account-info">
+                            <div class="user-img">
+                                <img src="imgs/1.png">
+                            </div>
+                            <div class="user-info">
+                                <div >登录账号：<span class="username"></span></div>
+                                <div>个性签名：<span  class="sign"></span></div>
+                                <div>手机号码：<span class="account"></span></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="safe-server">
+                                <ul>
+                                    <li>
+                                        <h3>您的安全服务</h3>
+                                        <div>
+                                            <span>当前安全等级：</span>
+                                            <span>低</span>
+                                            <span>（建议您开启全部安全设置，以保障账户及基金安全）</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li>
+                                                <img src="imgs/1.png" alt="">
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div>登录密码</div>
+                                                    <div class="text-binding">已设置</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <span>安全性高的密码可以使账号更加安全，建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位的密码，为保证您的账户安全，只有在您绑定手机后才可以修改密码。</span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-binding" data-toggle="modal" data-target="#UpdatePassWord">修改密码</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li>
+                                                <img src="imgs/1.png" alt="">
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div>手机绑定</div>
+                                                    <div class="un-text-binding">未绑定</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <span>进行手机验证后，可用于接受敏感操作的身份验证信息，以及进行保护您的账户和账户财产安全</span>
+                                            </li>
+                                            <li>
+                                                <span class="un-bg-binding">绑定手机</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li>
+                                                <img src="imgs/1.png" alt="">
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div>支付密码</div>
+                                                    <div class="un-text-binding">未绑定</div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <span>设置支付密码后，在使用账户中余额时，需输入支付密码</span>
+                                            </li>
+                                            <li>
+                                                <span class="un-bg-binding">设置密码</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 收货地址 -->
+                <div class="content-address tab-pane fade" id="address">
+                    <h2>收货地址</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>My wallet<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#receiving-address" data-toggle="tab">收货地址</a> <span></span></li>
+                        <li><a href="#add-address" data-toggle="tab">添加地址</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 收货地址 -->
+                        <div class="goods-list tab-pane fade in active" id="receiving-address">
+                            <ul class="list-item">
+                                <li class="th-name">收货人姓名</li>
+                                <li class="th-mode">联系方式</li>
+                                <li class="th-address">地址</li>
+                                <li class="th-detail-address">详细地址</li>
+                                <li class="th-code">邮编</li>
+                                <li class="th-operate">操作</li>
+                            </ul>
+                            <ul class="list-result" id="addresslist">
+                                <li>
+                                    <ul>
+                                        <li class="td-name">收货人姓名</li>
+                                        <li class="td-mode">18935460126</li>
+                                        <li class="td-address">上海市 嘉定区</li>
+                                        <li class="td-detail-address">三里屯SOHO大厦A栋1002室   </li>
+                                        <li class="td-code">020004</li>
+                                        <li class="td-operate">
+                                            <div class="inner">
+                                                <div class="edit">编辑</div>
+                                                <div class="del">删除</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 添加地址 -->
+                        <div class="goods-list tab-pane fade" id="add-address">
+                            <div class="addre">
+                                <ul class="list-item">
+                                    <li class="th-name">新增收货地址</li>
+                                </ul>
+                                <div class="info">
+                                    <ul>
+                                        <li>
+                                            <span>新增收货地址：</span>
+          
+                                        </li>
+                                        <li>
+                                            <span>所在地区：</span>
+                                            <span>
+                                                <form class="form-inline">
+                                                    <div data-toggle="distpicker">
+                                                        <div class="form-group">
+                                                            <label class="sr-only" for="province1">Province</label>
+                                                            <select class="form-control" id="province1"></select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="sr-only" for="city1">City</label>
+                                                            <select class="form-control" id="city1"></select>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>详细地址：</span>
+                                            <span>
+                                                <textarea name="" id="dateils_address" placeholder="详细地址，例如街道名称，门牌号码，楼层和房间号等"></textarea>
+                                            </span>
+                                        </li>
+                                       
+                                        <li>
+                                            <span>收货人姓名：</span>
+                                            <span>
+                                                <input type="text" placeholder="长度不超过25个字" id="name">
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>联系电话：</span>
+                                            <span>
+                                                <input type="text" placeholder="" id="tel">
+                                            </span>
+                                        </li>
+                                       
+                                       
+                                        <li>
+                                            <span></span>
+                                            <input type="button" value="保存" id="btn_adress">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 我的足迹 -->
+                <div class="content-footprint tab-pane fade" id="footprint">
+                    <h2>我的足迹</h2>
+                    <img src="imgs/组24.png" alt="">
+                    <p>My Tracks<span></span></p>
+                    <ul class="content-tab nav-tabs">
+                        <li class="active"><a href="#receiving-address" data-toggle="tab" class="goods-manage">管理</a></li>
+                        <li><a href="#add-address" data-toggle="tab" class="goods-del">删除</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 我的足迹 -->
+                        <div class="goods-list tab-pane fade in active myfoot" >
+                            <div class="goods-recommend">
+                                <ul id="myfood">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        
+        <h-recommend></h-recommend>
+    </div>
+    <a id="firstPageTime" style="display: none"></a>
+    <a id="count" style="display: none"></a>
+    <a id="toucount" style="display: none"></a>
+        <a id="refundcount" style="display: none"></a>
+    <a id="withcount" style="display: none"></a>
+    <a id="report_shop_count" style="display: none"></a>
+    <a id="report_goods_count" style="display:none"></a>
+    <div class="modal fade" id="myModal" tabindex="-1" 
+        role="dialog" aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog" style="width:890px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        申请退款
+                    </h4>
+                </div>
+                <div class="modal-body"  style ="width:1000px;">
+                      <div class="pop tab-pane " >
+                            <!--<ul class="list-item">
+                                <li class="th-evaluate">退货申请</li>
+                            </ul>-->
+                            <div class="return-info">
+                                <div class="order-num">
+                                    <span>订单号：</span>
+                                    <span class="order_id"></span>
+                                </div>
+                                <ul class="return-goods">
+                                    <li class="th-item">
+                                        <ul>
+                                            <li>商品信息</li>
+                                            <li>退款金额</li>
+                                            <li>申请时间</li>
+                                        </ul>
+                                    </li>
+                                    <li class="td-item1" id="return_order">
+                                        <!--<ul>
+                                            <li>
+                                                <div class="goods-img">
+                                                    <img src="imgs/1.png" alt="">
+                                                </div>
+                                                <div>毛毛商品毛毛商品毛毛商品</div>
+                                            </li>
+                                            <li>799.00元</li>
+                                            <li>2018-10-08 13.09.27</li>
+                                        </ul>-->
+                                       
+                                    </li>
+                                    <li class="td-item2">
+                                        <span>退款原因：</span>
+                                        <select id="return_list">
+                                           
+                                        </select>
+                                    </li>
+                                    <li class="td-item3">
+                                        <span>退款说明：</span>
+                                        <input type="text" placeholder="选填" id="salesreturn_explain">
+                                    </li>
+                                    <li class="td-item4">
+                                        <span>上传凭证：</span>
+                                        <div class="upload" style="height:130px;width:130px;">
+                                            <img src="imgs/tuikuan.png" class="salesreturn_voucher_img1" alt="111">
+                                            <input type="file" id="salesreturn_voucher_img1" onchange="ReturnImage1()">
+                                        </div>
+                                        <div class="upload">
+                                            <img src="imgs/tuikuan.png" alt="111" class="salesreturn_voucher_img2">
+                                            <input type="file" id="salesreturn_voucher_img2" onchange="ReturnImage2()">
+                                            
+                                        </div>
+                                         <div class="upload">
+                                            <img src="imgs/tuikuan.png" alt="111" class="salesreturn_voucher_img3">
+                                            <input type="file" id="salesreturn_voucher_img3"  onchange="ReturnImage3()">
+                                            
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="modify">
+                                    <h3>收货信息</h3>
+                                    <ul>
+                                        <li>
+                                            <span>姓      名：</span>
+                                            <input type="text" value="" readonly class="order_name">
+                                        </li>
+                                        <li>
+                                            <span>收货地址：</span>
+                                            <input type="text" value=" " readonly class="order_address">
+                                        </li>
+                                        <li>
+                                            <span>联系电话：</span>
+                                            <input type="text" value="" readonly class="contact_tel">
+                                            <a class="merchants_in_id" style="display:none"></a>
+                                              <a class="order_goods_id" style="display:none"></a>
+                                              <a class="order_sum_price" style="display:none"></a>
+                                                 <a class="refund_state" style="display:none"></a>
+                                        </li>
+                                      <!--  <li>
+                                            <span>支付方式：</span>
+                                            <input type="text" value="在线支付" readonly>
+                                        </li>-->
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="modal-body text-center">
+                    <input type="button" value="提交申请" class="btn btn-success btn-lg" onclick="BtnReturnMoney()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="UpdatePassWord" tabindex="-1" role="dialog" 
+        aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:550px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                       修改密码
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group " >
+                            <label class="col-sm-3 " style="font-size:16px;height:34px;line-height:30px;">原密码：</label>
+                            <div class="col-sm-9" style="margin-left:-30px;">
+                            <input type="text" class="form-control " id="old_password" />
+                                </div>
+                        </div>
+                       
+                        
+                    </div>
+                     <div class="row">
+                             <div class="form-group " >
+                            <label class="col-sm-3 " style="font-size:16px;height:34px;line-height:30px;">新密码：</label>
+                            <div class="col-sm-9" style="margin-left:-30px;">
+                            <input type="text" class="form-control " id="password"/>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <input type="button" value="确认修改" class="btn btn-success btn-sm-3" onclick="UpdatePassWord()" />
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Logistics" tabindex="-1" role="dialog" 
+       aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:850px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                       物流详情
+                    </h4>
+                </div>
+                <div class="modal-body">
+                 
+                     <div class="logistics-detail">
+                             <!--   <ul class="logistics-hd">
+                                    <li class="th-logistics">物流信息</li>
+                                </ul>-->
+                        <div class="logistics-bd">
+                            <div class="logistics-icon">
+                                <ul>
+                                    <li class="step-1">发货</li>
+                                    <li class="step-2">运输</li>
+                                    <li class="step-3">派送</li>
+                                    <li class="step-4">签收</li>
+                                </ul>
+                            </div>
+                            <div id="status-list">
+                                <h3 class="title" id="tilte">您的快件正在运输中，请耐心等待...</h3>
+                                <ul class="status-list" id="logiction_list">
+                                   <!--  <li>
+                                        <span class="date">2018-06-11</span>
+                                        <span class="week">周一</span>
+                                        <span class="time">14:38:55</span>
+                                        <span class="text">卖家发货</span>
+                                    </li>
+                                    <li>
+                                        <span class="date">2018-06-12</span>
+                                        <span class="week">周二</span>
+                                        <span class="time">10:38:55</span>
+                                        <span class="text">【苍南灵溪点部】的收件员【灵溪点部59917507】已收件</span>
+                                    </li>
+                                    <li>
+                                        <span class="date">2018-06-13</span>
+                                        <span class="week">周三</span>
+                                        <span class="time">15:38:55</span>
+                                        <span class="text">【由【苍南】发往【温州分拨中心】</span>
+                                    </li>
+                                    <li class="new">
+                                        <span class="date">2018-06-14</span>
+                                        <span class="week">周四</span>
+                                        <span class="time">5:38:55</span>
+                                        <span class="text">【由【温州分拨中心】发往【上海集散】</span>
+                                    </li> -->
+                                </ul>
+                            </div>
+                            <div class="logistics-info">
+                                <ul>
+                                    <li>
+                                        <span>运单号码：</span><span id="express_number"></span>
+                                    </li>
+                                    <li>
+                                        <span>物流公司：</span><span id="express_company"></span>
+                                    </li>
+                                    <li>
+                                        <span>官方电话：</span><span id="express_tel"></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div> 
+               <!-- <div class="modal-body text-center">
+                    <input type="button" value="确认修改" class="btn btn-success btn-sm-3" onclick="UpdatePassWord()" />
+                </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--绑卡输入手机验证码-->
+    <div class="modal fade" id="BankCode" tabindex="-1" role="dialog" 
+        aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:550px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                      验证验证码
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group " >
+               
+                        <input type="text" name="" class="validate" placeholder="请输入验证码" value="" id="sms_code">
+                            <button class="get_validate">获取验证码</button>
+                        </div>                       
+                    </div>
+                    
+                    </div>
+                <div class="modal-body text-center">
+                    <input type="button" value="确认" class="btn btn-success btn-sm-3" onclick="BtnBingCard()"  />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    充值输入支付密码-->
+    <div class="modal fade" id="Top_Up" tabindex="-1" 
+        role="dialog" aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:220px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                      支付密码
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group " >
+               
+                        <input type="password" name="" class="form-control" placeholder="请输入支付密码" value="" id="payPassWord">
+
+                           
+                        </div>
+                       
+                        
+                    </div>
+                    
+                    </div>
+                <div class="modal-body text-center">
+                    <input type="button" value="确认" class="btn btn-success btn-sm-3" onclick="TouUpMoney()"  />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--提现输入支付密码-->
+    <div class="modal fade" id="T_PayPassWord" tabindex="-1" 
+        role="dialog" aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:220px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                      支付密码
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group " >
+               
+                        <input type="password" name="" class="form-control" placeholder="请输入支付密码" value="" id="payPassword">
+
+                           
+                        </div>
+                       
+                        
+                    </div>
+                    
+                    </div>
+                    <div class="modal-body text-center">
+                        <input type="button" value="确认" class="btn btn-success btn-sm-3" onclick="ApplyWithdrawal()"  />
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!--充值输入手机验证码-->
+    <div class="modal fade" id="Top_Up_Phone" tabindex="-1" 
+        role="dialog" aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:550px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                      验证验证码
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group " >
+               
+                        <input type="text" name="" class="" placeholder="请输入验证码" value="" id="top_validate">
+
+                            <button class="top_up_validate">获取验证码</button>
+                        </div>
+                       
+                        
+                    </div>
+                    
+                    </div>
+                <div class="modal-body text-center">
+                    <input type="button" value="确认" class="btn btn-success btn-sm-3" onclick="BtnTopUp()"  />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="OpenMyMoney" tabindex="-1" 
+        role="dialog" aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:550px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                       开通钱包
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group " >
+                            <label class="col-sm-3 " style="font-size:16px;height:34px;line-height:30px;">户名：</label>
+                            <div class="col-sm-9" style="margin-left:-30px;">
+                            <input type="text" class="form-control " id="k_name"  placeholder="开户人姓名"/>
+                                </div>
+                        </div>
+                       
+                        
+                    </div>
+                     <div class="row">
+                             <div class="form-group " >
+                            <label class="col-sm-3 " style="font-size:16px;height:34px;line-height:30px;">身份证：</label>
+                            <div class="col-sm-9" style="margin-left:-30px;">
+                            <input type="text" class="form-control " id="k_number" placeholder="开户人身份证"/>
+                                </div>
+                        </div>
+                        </div>
+                      <div class="row">
+                             <div class="form-group " >
+                            <label class="col-sm-3 " style="font-size:16px;height:34px;line-height:30px;">手机号：</label>
+                            <div class="col-sm-9" style="margin-left:-30px;">
+                            <input type="text" class="form-control " id="k_phone" placeholder="常用手机号码"/>
+                                </div>
+                        </div>
+                        </div>
+                      <div class="row">
+                             <div class="form-group " >
+                            <label class="col-sm-3 " style="font-size:16px;height:34px;line-height:30px;">电子邮箱：</label>
+                            <div class="col-sm-9" style="margin-left:-30px;">
+                            <input type="text" class="form-control " id="k_email" placeholder="常用电子邮箱"/>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <input type="button" value="确认开通" class="btn btn-success btn-sm-3" onclick="KMyMoney()" />
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!--退款详细-->
+     <div class="modal fade" id="refrund" tabindex="-1" 
+        role="dialog" aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog" style="width:890px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                       退款详细
+                    </h4>
+                </div>
+                <div class="modal-body">
+                      <div class="pop tab-pane " >
+                            <!--<ul class="list-item">
+                                <li class="th-evaluate">退货申请</li>
+                            </ul>-->
+                            <div class="return-info">
+                                <div class="order-num">
+                                    <span>退款编号：</span>
+                                    <span id="order_number"></span>
+                                </div>
+                                <ul class="return-goods" style="height:400px">
+                                    <li class="th-item">
+                                        <ul>
+                                            <li>商品信息</li>
+                                            <li>退款金额</li>
+                                            <li>申请时间</li>
+                                        </ul>
+                                    </li>
+                                    <li class="td-item1">
+                                        <ul>
+                                            <li>
+                                                <div class="goods-img">
+                                                    <img src="imgs/1.png"  id="icon">
+                                                </div>
+                                                <div id="goods_name"></div>
+                                            
+                                            </li>
+                                            <li id="money"></li>
+                                            <li id="time"></li>
+                                        </ul>
+                                       
+                                    </li>
+                                   <!-- <li class="td-item2">
+                                           <ul>
+                                                <li>
+                                                    <div class="step1">
+                                                        <span>下单</span>
+                                                        <span>2018-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step2">
+                                                        <span>付款</span>
+                                                        <span>2019-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step3">
+                                                        <span>配货</span>
+                                                        <span>2019-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step4">
+                                                        <span>交易成功</span>
+                                                        <span>2019-10-08 13.09.27</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="step5">
+                                                        <span>评价</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                    </li>-->
+                                    <li class="td-item3">
+                                        <span>退款状态：</span>
+                                   <span id="sa_state"></span>
+                                    </li>
+                                 
+                                </ul>
+                       
+                            </div>
+
+                        </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+   <div class="modal fade" id="Comment" tabindex="-1" 
+        role="dialog" aria-labelledby="myMalLabel" aria-hidden="true" >
+        <div class="modal-dialog"  style="width:857px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f86d5a;color:#fff;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" >
+                    商品评价
+                    </h4>
+                </div>
+                <div class="modal-body">
+                     
+                          <div class="evaluate-s">
+                              <div class="goods-commend">
+                                      <span >商品：</span>
+                                  <img src="imgs/loginbj2.png"/>
+
+                              </div>
+                                        <div class="goods-score">
+                                            <div class="scores">
+                                            <span >商品评分：</span>
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png" >
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_k.png" >
+                                                </div>
+                                                     <div class="scores">
+                                            <span >服务评分：</span>
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png" >
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_k.png" >
+                                                </div>
+                                                     <div class="scores">
+                                            <span >物流评分：</span>
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png" >
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_s.png">
+                                            <img src="imgs/star_k.png" >
+                                                </div>
+                                           
+                                        </div>
+                              
+                                        <div class="evaluate-content">
+                                            <span>评论内容：</span>
+                                            <textarea class="txt" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="Huitextarealength(this)" placeholder="宝贝满足您的期待吗？说说您的使用心得，分享给想买的他们吧">宝贝满足您的期待吗？说说您的使用心得，分享给想买的他们吧</textarea>
+                                            <p class="textarea-numberbar"><em class="textarea-length">0</em>/<am>200</am></p>
+                                        </div>
+                                        <div class="evaluate-pic">
+                                            <span>评论图片：</span>
+                                            <ul>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="" />
+                                                    <input type="file">
+                                                    <div class="imgs">添加2之5张图片</div>
+                                                </li>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="">
+                                                    <input type="file">
+                                                </li>
+                                                <li>
+                                                    <img src="imgs/plus.jpg" alt="">
+                                                    <input type="file">
+                                                </li>
+                                            </ul>
+
+                                           
+                               </div>
+                               <div class="btn-release">
+                                                发布评价
+                                           </div>
+                          </div>
+                   </div>
+            </div>
+        </div>
+    </div>
+    <!-- 商城尾部 -->
+    <h-footer></h-footer>
+    <!-- 登录 -->
+    <h-login></h-login>
+    <script src="js/plugins/jquery/jquery.min.js"></script>
+    <script src="js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="plugins/layer-v3.1.1/layer/layer.js"></script>
+    <script src="js/plugins/carousel/ft-carousel.min.js"></script>
+    <script src="js/plugins/cropper/cropper.js"></script>
+
+    <script src="js/plugins/distpicker/distpicker.data.js"></script>
+    <script src="js/plugins/distpicker/distpicker.js"></script>
+    <script src="js/plugins/distpicker/main.js"></script>
+    <script src="js/plugins/vue/vue.min.js"></script>
+    <script src="js/plugins/pagination/paging.js"></script>
+    <script src="js/plugins/pagination/pagingfunction.js"></script>
+    <script src="js/common/cookies.js"></script>
+    <script src="js/common/common.js"></script>
+    <script src="js/ucenter/ucenter.js"></script>
+    <script src="js/ucenter/ucenter-jq.js"></script>
+    <script src="js/ucenter/HuaXiaBingCard.js"></script>
+
+</body>
+</html>

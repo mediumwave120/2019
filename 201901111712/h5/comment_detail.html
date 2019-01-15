@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+	<!-- <meta name="full-screen" content="yes"> -->
+	<title></title>
+	<link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/comment_detail.css">
+
+</head>
+<body>
+	<div id="app">
+		<div class="header">
+			<div class="top">
+				<a href="javascript:void(0)" onclick="history.go(-1)">
+					<img src="../imgs/Group 13@3x.png">
+				</a>		
+				<div class="middle">
+					<img src="../imgs/kefu.png" alt="">
+				</div>
+				<div class="right">
+					<div class="one">
+						<img src="../imgs/Group 14@3x.png" alt=""  @click="location.href='shopping.html'">						
+					</div>
+					<div class="two">
+						<img src="../imgs/Group 15@3x.png" alt="" class="selected">
+						<ul class="select">
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>消息</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>首页</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>我要反馈</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>分享</span>
+							</li>
+						</ul>						
+					</div>
+
+				</div>				
+			</div>
+		</div>
+		<div class="comment">
+			<ul>
+				<li>
+					<div class="list">
+						<div class="img">
+							<img :src="'http://122.112.209.170:8088'+getCommentList.logo">
+							<span>{{getCommentList.nick_name}}</span>
+						</div>
+						<div class="time">{{getCommentList.create_time}}</div>
+						<div class="reply">
+							{{getCommentList.content}}
+						</div>
+
+						<div class="goods-info" @click="goodsDetail(getCommentList.goods_id)">
+							<img :src="'http://122.112.209.170:8088'+getCommentList.icon" alt="">
+							<div class="goods-name">{{getCommentList.name}}</div> 
+							<div class="goods-spec">{{getCommentList.specificationsText}}</div> 
+							<div class="goods-price">¥0.01</div> 
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="comment-list">
+				<div class="num">
+					<img src="../imgs/gouwuche_un.png">全部评论（{{getCommentList.goods_comment.length}})
+				</div>
+				<ul class="list">
+					<li v-for="list in getCommentList.goods_comment">
+						<div class="left">
+							<img :src="'http://122.112.209.170:8088'+list.user_logo" alt="">
+						</div>
+						<div class="right">
+							<div class="nick-name">{{list.nick_name}}</div>
+							<div class="create-time">{{list.create_time}}</div>
+							<div class="comment-content">{{list.comment_content}}</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>	
+		<div class="fixed">
+			<input type="text" v-model="txt">
+			<button @click="send(getCommentList.goods_id,getCommentList.goods_comment_id)">发送</button>
+		</div>
+  	</div>
+	<script src="../js/plugins/jquery/jquery.min.js"></script>
+	<script src="../js/plugins/vue/vue.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="../js/plugins/swiper/swiper.min.js"></script>
+	<script src="js/comment_detail.js"></script>
+</body>
+</html>

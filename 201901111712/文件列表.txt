@@ -1,0 +1,79 @@
+商品详情  goods_detail.htmlgoods_detail.css/
+商品搜索 goods_search.html/goods_search.css
+首页 index.html/index.css
+支付方式 payment_mode.html/payment_mode.css
+支付成功 payment_success.html/payment_success.css
+订单 order.html/order.css
+店铺 shop.html/shop.css
+店铺搜索 shop_search.html/shop_search.css
+购物车  shopping_cart.html/shopping_cart.css
+个人中心 ucenter.html/ucenter.css
+头部组件header.css
+脚部组件footer.css
+公用组件commom.css
+样式重置reset.css
+分页组件myPagination.css
+轮播组件ft-carousel.css
+框架bootstrap.min.css
+动画animate.css
+
+
+需要调用的页面
+1.样式
+/*预览（图片、视频）*/
+   #preview{
+   position: fixed;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(0,0,0,0.5);
+   z-index: 9999;
+   display: none;
+}
+   #preview-child{
+   z-index:9998;
+   width:300px !important;
+   height:430px !important;
+   position:absolute;
+   left:50%;
+   top:50%;
+   transform:translate(-50%,-50%);
+}
+2.标签
+   <div id="preview"></div>
+3.js
+//子页面需要调用的方法
+function showChild(src){
+   var type=src.substr(src.lastIndexOf('.')).toLowerCase();
+   if(type==='.jpg'||type==='.png'||type==='.gif'||type==='.jpeg'){
+       $('#preview').fadeIn(500);
+       var img=$('<img>').attr({'id':"preview-child","src":src});
+       $('#preview').append(img);
+   }
+   if(type===".mp4"){
+       $('#preview').fadeIn(500);
+       var video=$('<video></video>').attr({'id':'preview-child','autoplay':'autoplay','controls':'controls','src':src});
+       $('#preview').append(video);
+   }
+
+}
+//点击关闭视频或者图片
+$('#preview').click(function(e){
+   if (e.target.nodeName == 'DIV') {
+       $('#preview').fadeOut(500);
+       $('#preview-child').remove();
+   }
+   if (e.target.nodeName == 'IMG') {
+       e.stopPropagation();
+   }
+   if (e.target.nodeName == 'VIDEO') {
+       e.stopPropagation();
+   }
+})
+子页面：
+//点击图片预览视频或者图片
+$('.swper').click(function (e) {
+   e.preventDefault();
+   top.window.showChild(this.src);
+})

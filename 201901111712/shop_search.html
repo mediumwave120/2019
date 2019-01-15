@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/shop_search.css">
+</head>
+<body>
+  <div  id="app"> 
+    <!-- mall header -->
+    <header>
+          <div id="header">
+            <div class="top-wrap">
+              <div class="header-l">
+               <a href="javascript:;">欢迎您！</a> <span></span>  <a href="#" class="name"></a> 
+               <a href="javascript:;" class="login-state" @click="login">请登录</a> <span></span>
+                   <a href="javascript:;" class="login-end " style="display:none;"  @click="deletelogin()">退出登录</a>             
+            </div>
+            <div class="header-r">
+               <a href="#">收藏夹</a> <span></span>
+               <a href="ucenter.html?my_order" >我的订单</a> <span></span>
+               <a href="#">客服服务</a>
+            </div>
+            </div>
+            <div class="bottom-wrap" id="bottom-wrap">
+               <div class="aaaa">
+                 <div class="bottom-l">
+                    <a href="index.html">
+                      <img src="imgs/logo.png">
+                    </a>
+                  </div>
+                  <div class="bottom-c">
+                    <div>
+                      <div class="search-tab-box">
+                        <ul id="tab">
+                          <li 
+                          v-for="(tab_list,index) in tabList"
+                          :class="{'active':index==tab_list.id}"
+                          @click="changTab(index)"
+                          :id="index">
+                  {{tab_list.name}}
+                          </li>
+                        </ul>
+                        <input type="text" name="" class="search" placeholder="请输入想要找的宝贝" v-model="content" :value="content"/>
+                        <input type="button" name=""  value="搜索" class="SEARCH" @click="search"/>
+                        <div class="tab-content">
+                          <ul v-for="(rl,index) in recommendList"  
+                            :class="index==rl.id?'hots':'hide'" 
+                            @click="changTab(index)"
+                            >
+                  <li v-for="goods in rl.goods" :class=""><a href="#">{{goods.name}}</a></li>
+                  <li v-for="shop in rl.shop"   :class=""><a href="#">{{shop.name}}</a></li>
+                  <li v-for="duke in rl.duke"   :class=""><a href="#">{{duke.name}}</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom-r">
+                    <a href="shopping_cart.html">
+                        <img src="imgs/购物车空.png">
+                        <span>我的购物车</span>
+                      </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+    </header>
+    <!-- mall -->
+    <div class="container">
+      <div class="home">
+        <div class="goods-classify">
+          <ul>
+            <li>首页<span></span></li>
+            <li class="list"><span class="left"></span>店铺<span class="right"></span></li>
+            <li class="list1"><span class="left1"></span>列表<span class="right1"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="shop">
+        <div class="shop-list">
+          <div class="shop-sort">
+            <ul>
+              <!-- <li v-for="(sort_list,i) in sortList" class="default" :class="sort_list.num==i+1?'active-color':'default'" @click="getMerchantInList(i+1)">
+                {{sort_list.name}}
+              </li> -->
+              <li v-for="(sort_list,i) in sortList" class="default" 
+              :class="{'active-color':i+1==sort_list.num}" @click="getMerchantInList(i+1)">
+                {{sort_list.name}}
+              </li>
+             <!--  <li @click="getMerchantInList('1')" :class="{'active-color':flag}">综合排序</li>
+              <li @click="getMerchantInList('2')"  :class="{'active-color':flag}">销量</li>
+              <li @click="getMerchantInList('3')" :class="{'active-color':flag}">信用</li>
+              <li @click="getMerchantInList('4')" :class="{'active-color':flag}">好评</li> -->
+              <li><span>1</span>/<span>12</span><span class="prev">&lt;</span><span class="next">&gt;</span></li>
+            </ul>
+          </div>
+          <div class="shop-goods">
+              <ul>
+                 <li v-for="shop_list in shopList">
+                     <div class="shop-info">
+                         <div class="shop-top">                          
+                             <div class="shop-img">
+                                 <img :src="'http://122.112.209.170:8088'+shop_list.shop_logo" alt="">
+                             </div>
+                             <div class="shop-name" @click="location.href='shop.html'">
+                              <a :href="'shop.html?merchants_in_id='+shop_list.merchants_in_id">
+                                <span>{{shop_list.shop_name}}</span>
+                              </a>
+                                 
+                             </div>
+                             <div class="shop-nick-name">
+                                 <label>
+                                     卖家：<span>{{shop_list.shop_name}}</span>
+                                 </label>
+                             </div>
+                             <div class="shop-major-business">
+                                 <label>
+                                     主营：<span>男装 古风 女装 </span>
+                                 </label>
+                             </div>
+                         </div>
+                         <div class="shop-down">
+                             <label>
+                                 销量<span class="shop-sales-volume">5101</span>
+                             </label>
+                              <label>
+                                 共<span class="shop-total-num">510</span>件宝贝
+                             </label>
+                             
+                         </div>
+                     </div>
+                     <div class="goods-img">
+                         <ul>
+                               <li v-for="(goods,index) in shop_list.Goods" v-if="index<4">
+                                    <div class="goods-top"  @click="location.href='goodsDetails.html?goods_id='+goods.goods_id">                                        
+                                        <img :src="'http://122.112.209.170:8088'+goods.icon">
+                                    </div>
+                                    <div class="goods-down">
+                                       <span class="price">{{5999+index}}</span><span class="sign">RMB</span>
+                                   </div>
+                               </li>
+                               
+                           </ul>                     
+                     </div>
+                 </li> 
+              </ul>
+          </div>  
+        </div>
+        <!-- <div class="clear" style="clear: both;"></div> -->
+        <div class="pagination">
+          <ul>
+            <li>上一页</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>.....</li>
+            <li>99</li>
+            <li>下一页</li>
+            <li>跳转到<input type="text" style="width: 40px;">页</li>
+            <li>跳转</li>
+          </ul>
+        </div>
+
+      </div>
+    
+    <div class="ad">
+        <img src="imgs/1.png" alt="" width="100%" height="617">
+    </div>
+    <div class="h162"> </div>
+    <h-recommend></h-recommend>
+    </div>
+  </div>
+  <!-- 商城尾部 -->
+  <h-footer></h-footer>
+  <!-- 登录 -->
+  <h-login></h-login>
+<script src="js/plugins/jquery/jquery.min.js"></script>
+<script src='js/plugins/vue/vue.min.js'></script>
+<script src="js/common/cookies.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/shop_search.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+	<title></title>
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+
+</head>
+<body>
+	<div id="app">
+		<div class="header">			
+			<div class="top">
+		        <a  href="javascript:;" @click="history.go(-1)" class="city">上海</a> 
+		        <a target="_parent" href="#" class="search">
+		          <img src="../imgs/search-5@2x.png">
+		          <input type="text" name="" value="" readonly>   		        	
+		        </a>   
+		    </div>
+		</div>
+		<div class="swiper"></div>
+		<!-- <div class="swiper-container">
+	    <div class="swiper-wrapper" >
+	      <div class="swiper-slide" v-for="l in list" v-if="l.type=='1'">
+	      	<img :src="'http://122.112.209.170:8088'+l.image" >
+	      </div>
+	    </div>
+	    <div class="swiper-pagination"></div>
+	   	</div> -->
+	   	<!-- <div class="clear"></div> -->
+	   	<!-- shop-list -->
+	   	<div class="shop"></div>
+	   	<!-- hots -->
+	   	<div class="hots">
+		  	<div class="txt">
+		  		热卖榜单
+		  	</div>
+		  	<div class="hots-goods-category">
+		  		
+		  	</div>
+		  	<div class="hots-goods">
+		  		<ul>
+		  			<li>
+		  				<div class="goods-category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="goods-category-name">
+		  					手机
+		  				</div>
+		  				<div class="goods-category-price">
+		  					<span>¥1</span>
+		  					<del>¥11</del>
+		  				</div>
+		  			</li>
+		  			<li>
+		  				<div class="goods-category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="goods-category-name">
+		  					没说
+		  				</div>
+		  				<div class="goods-category-price">
+		  					<span>¥11</span>
+		  					<del>¥111</del>
+		  				</div>
+		  			</li>
+		  			<li>
+		  				<div class="goods-category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="goods-category-name">
+		  					手机
+		  				</div>
+		  				<div class="goods-category-price">
+		  					<span>¥1</span>
+		  					<del>¥11</del>
+		  				</div>
+		  			</li>
+		  			<li>
+		  				<div class="goods-category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="goods-category-name">
+		  					没说
+		  				</div>
+		  				<div class="goods-category-price">
+		  					<span>¥11</span>
+		  					<del>¥111</del>
+		  				</div>
+		  			</li>
+		  		</ul>
+		  	</div>
+	   	</div>
+		<div class="recommend">
+		  	<div class="txt">
+		  		为您推荐
+		  	</div>
+		  	<div class="recommend-category">
+		  		
+		  	</div>
+		  	<div class="recommend-goods">
+		  		<ul>
+		  			<li>
+		  				<div class="category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="category-name">
+		  					手机
+		  				</div>
+		  				<div class="category-price">
+		  					<span>¥1</span>
+		  					<del>¥11</del>
+		  				</div>
+		  			</li>
+		  			<li>
+		  				<div class="category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="category-name">
+		  					没说
+		  				</div>
+		  				<div class="category-price">
+		  					<span>¥11</span>
+		  					<del>¥111</del>
+		  				</div>
+		  			</li>
+		  			<li>
+		  				<div class="category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="category-name">
+		  					手机
+		  				</div>
+		  				<div class="category-price">
+		  					<span>¥1</span>
+		  					<del>¥11</del>
+		  				</div>
+		  			</li>
+		  			<li>
+		  				<div class="category-img">
+		  					<img src="../imgs/gerenzhonxing gerentouxiang@3x.png">
+		  				</div>
+		  				<div class="category-name">
+		  					没说
+		  				</div>
+		  				<div class="category-price">
+		  					<span>¥11</span>
+		  					<del>¥111</del>
+		  				</div>
+		  			</li>
+		  		</ul>
+		  	</div>
+		</div>
+		<!-- <div class="lh">ddddddd</div> -->
+		
+		  
+	  
+  	</div>
+	<script src="../js/plugins/jquery/jquery.min.js"></script>
+	<script src="../js/plugins/vue/vue.min.js"></script>
+	<script src="../js/plugins/swiper/swiper.min.js"></script>
+	<script src="js/home.js"></script>
+</body>
+</html>

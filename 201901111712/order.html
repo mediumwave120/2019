@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <title>订单</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/order.css" >
+    <link rel="stylesheet" href="plugins/layer-v3.1.1/layer/theme/default/layer.css">
+    
+    <!--[if IE]>
+      <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- 商城头部 -->
+    <h-header></h-header>
+  <div id="app" v-cloak>
+    <!-- 商城正文 -->
+    <div class="container">
+      <div class="home">
+        <div class="goods-classify">
+          <ul>
+            <li>首页<span></span></li>
+            <li class="list"><span class="left"></span>列表<span class="right"></span></li>
+            <li class="list1"><span class="left1"></span>产品详情<span class="right1"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="img">
+        <img src="imgs/确认订单.png" alt="">
+      </div>
+      <div class="step1">
+        <img src="imgs/选择收货地址.png" alt="">
+      </div>
+      <div class="address-tab">        
+          <div class="add-address" 
+            v-for="(item,index) in addressList" 
+            :class='{active:index==number}' 
+            @click='changeAddress(index)'
+            :shipping-address-id="item.shipping_address_id"
+            v-if='index<3'>
+            <h3>{{item.area}}</h3>
+            <div>{{item.detailed_address}}</div>
+            <h2>{{item.contact_people}} {{item.contact_tel}}</h2>
+            <button class="modify-address" @click='editAddress(item)' v-if='index==number'>修改</button>
+          </div>
+          <!-- <div class="address"  @click='changeAddress'>
+            <h3>北京市 朝阳区</h3>
+            <div>三里屯SOHO大厦A栋1002室   020004 </div>
+            <h2>张冲 134-2345-6549</h2>
+          </div>
+          <div class="address"  @click='changeAddress'>
+              <h3>北京市 朝阳区</h3>
+              <div>三里屯SOHO大厦A栋1002室   020004 </div>
+              <h2>张冲 134-2345-6549</h2>
+          </div> -->
+          <div class="clear"></div>
+          <div class="modify">
+            <div class="new-address" @click="addAddress">
+              <a href="javascript:;">使用新地址</a>
+            </div>
+            <!-- div class="edit-address" @click='editAddress'>
+              <a href="javascript:;">编辑地址</a>            
+            </div> -->
+          </div>
+      </div>
+      <div class="step2">
+        <img src="imgs/确认商品信息.png" alt="">
+      </div>
+      <div class="goods-list">
+        <ul class="list-item">
+          <li class="th-item">商铺信息</li>
+          <li class="th-price">商品单价</li>
+          <li class="th-amount">数量</li>
+          <li class="th-sum">小计</li>
+          <!-- <li class="th-operate">操作</li> -->
+        </ul>
+        <ul class="list-result" >
+          <li  v-for="shoplist in order_list" 
+               :merchants-in-id="shoplist.merchants_in_id" 
+               :sub-account="shoplist.SubAccount"
+               class="shop_id" 
+               >
+               <!-- <div class="clear"></div> -->
+              <div class="goods-box" v-show="shoplist.GoodsList.length>0">
+                <!-- <span class="tdspan"  @click='selectShop()'></span> -->
+                 <a href="商铺列表.html" 
+                :merchants-in-id="shoplist.merchants_in_id" 
+                id="merchants_user_id" 
+                :merchants-user-id="shoplist.user_id" 
+                :account="shoplist.account" 
+                :trade-mem-code="shoplist.TradeMemcode">店铺：{{shoplist.shop_name}}</a>
+              </div> 
+              <!-- 商品 -->
+              <div   >                
+                <ul v-for="goods_list in shoplist.GoodsList" :goods-id="goods_list.goods_id" class="goods_id" >
+                  <li class="td-item">
+                    <div class="img">
+                      <img src="imgs/bajiamache.png" v-if="goods_list.icon==''">
+                      <img :src="'http://122.112.209.170:8088'+goods_list.icon"  v-else alt="">
+                    </div>
+                    <div class="category_id" v-for="category_id in goods_list.GoodsSpecificationList"
+                    :category-id="category_id.goods_specification_category_id"></div>
+                    <div class="content">
+                      <h4>{{goods_list.name}}</h4>
+                      <p class="specificationsText">{{goods_list.specificationsText}}</p>
+                      <div class="edit">
+                        <img src="imgs/edit.png" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="td-price"><span>{{goods_list.buying_price}}</span></li>
+                  <li class="td-amount">
+                    <!-- <input type="text" class="text-amount" disabled :value="goods_list.buy_count"> -->
+                    <span class="text-amount">{{goods_list.buy_count}}</span>
+                  </li>
+                  <li class="td-sum">{{parseFloat(goods_list.buy_count*goods_list.buying_price)}}</li>
+                  <!-- <li class="td-operate">
+                    <div class="inner">
+                      <div class="del">删除</div>
+                    </div>
+                  </li> -->
+                  
+                </ul>
+                <div class="clear"></div>
+                <div class="message" v-show="shoplist.GoodsList.length>0">
+                  <label>
+                    买家留言：<textarea class="buyer-message"></textarea>
+                  </label>
+                  <label class="right">
+                    共<span>{{shoplist.goods_count}}</span>件商品
+                    小计：<span>￥</span><span class="goods_price">{{shoplist.goods_price}}</span>
+                  </label>
+                </div>
+              </div>
+              <hr>
+          </li>
+          <li>
+            <ul class="place-order">
+          <li>
+            <span></span>
+            <span></span>
+            <span></span>
+          </li>
+           <li>
+            <span></span>
+            <span></span>
+            <span></span>
+          </li>
+           <li>
+            <span>合计（不含运费）</span>
+            <span class="sum-price">{{totalPrice}}</span>
+            <span>RMB</span>
+          </li>
+           <li>
+              <a href="javascript:;" id="saveOrder" @click="saveOrder">提交订单</a>
+          </li>
+        </ul>
+          </li>
+        </ul>
+            
+        
+
+      </div>
+    </div>
+    <!-- <add-address></add-address> -->
+    <!-- 商城尾部 -->
+    <h-footer></h-footer>
+    <!-- 登录 -->
+  <h-login></h-login>
+  </div>
+
+  <script src="js/plugins/jquery/jquery.min.js"></script>
+  <script src="js/plugins/vue/vue.min.js"></script>
+  <script src="js/common/cookies.js"></script>
+  <script src="plugins/layer-v3.1.1/layer/layer.js"></script>
+  <script src="js/common/common.js"></script>
+  <script src="js/order.js"></script>
+</body>
+</html>

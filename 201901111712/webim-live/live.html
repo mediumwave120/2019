@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WebIM-DEMO</title>
+<link rel="stylesheet" href="css/bootstrap.css" />
+<script type="text/javascript" src="sdk/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="sdk/strophe.js"></script>
+<script type="text/javascript" src="sdk/json2.js"></script>
+<script type="text/javascript" src="sdk/easemob.im-1.0.7.js"></script>
+<script type="text/javascript" src="easemob.im.config.js"></script>
+<script type="text/javascript" src="bootstrap.js"></script>
+<link rel="stylesheet" href="css/webim.css" />
+<script type="text/javascript">
+var apiURL = null;
+var conn = null;
+	conn = new Easemob.im.Connection();
+$(function(){
+	
+	//初始化连接
+	conn.init({
+		//当连接成功的回调方法
+		onOpened : function() {
+			console.log("------------连接成功------------");
+			conn.setPresence();//设置用户上线状态，必须调用
+			console.log("------------设置上线状态------------");
+		},
+	//当连接关闭时的回调方法
+		onClosed : function() {
+			console.log("------------连接断开------------");;
+		},
+		//收到文本消息时的回调方法
+		onTextMessage : function(message) {
+			console.log("------------接收到文本消息------------");
+			var a=message.data;
+			console.log(message);
+			 $("#content").append(message.from+"说："+message.data+"\r\n");
+		},
+		//异常时的回调方法
+		onError : function(message) {
+			console.log("---发生一个错误，错误类型是:"+message.type+"详细错误是："+message.msg);
+		}
+	});
+	//根据用户名密码登录系统
+	conn.open({
+		apiUrl : apiURL,
+		user : "miaomiao1",
+		pwd : "123456",
+		//设置登陆APPKEY
+          appKey : Easemob.im.config.appkey
+	});
+	
+});	
+	//发送消息
+	function sendMsg(){
+		var sendStr=$("#sendContent").val();
+		var options = {
+	            to : "100625147102233084",
+	            msg : sendStr,
+	            type : "groupchat",	
+	        };
+		conn.sendTextMessage(options);
+		 $("#content").append(conn.context.userId+"说："+options.msg+"\r\n");
+	}
+</script>
+</head>
+	<body>
+	<div class="box">
+	<form id="add" enctype="multipart/form-data" method="post" name="fileinfo">
+		
+		<div>
+			<textarea placeholder="" id="content" style="height: 120px;width: 215px;"></textarea>
+		</div>
+		
+		<div>
+			<input type="text" placeholder="请输入要发送的内容" id="sendContent">
+			<input type="button" value="发送" onclick="sendMsg()">
+		</div>
+	</form>
+</div>
+	</body>
+
+</html>

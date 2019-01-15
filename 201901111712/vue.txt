@@ -1,0 +1,35 @@
+1.<!--通过切换索引值改变class-->
+<style>
+     .active{
+         color: red;
+     }
+</style>
+ <ul id="app">  
+     <li v-for='(item,index) in items' @click="change(index)" :class='{active:index===number}'> <!--通过切换索引值改变class-->
+     　　<span v-html="item.name"></span>
+     </li>  
+ </ul> 
+ <script>  
+    new Vue({  
+        el: '#app',  
+        data: {
+            number: 0,
+        items:[
+        {
+            name: "我是0",
+        },
+        {
+            name: "我是1"
+        },
+        {
+            name: "我是2"
+            }
+        ]
+        },  
+        methods: {
+            change: function(index) {  
+                this.number= index;  
+        }  
+    }  
+})  
+</script>

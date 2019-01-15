@@ -1,0 +1,242 @@
+*{
+	padding:0;
+	margin:0;
+}
+body{
+	background-color: #f5f5f5;
+	height: 100%;
+	overflow-x:hidden;
+	max-width: 600px;
+	margin:0 auto;
+}
+#app{
+	.header{
+		// width: 100%;
+		position: fixed;
+		top:0;
+		left:0;
+		right: 0;
+		z-index:1;
+		max-width: 600px;
+		height: 160px;
+		
+		.shop-bimg{
+			height: 160px;
+			// max-width: 375px;
+			width: 100%;
+		}
+		.top{
+			margin-top: -164px;		
+			// background-color: #fd6603;
+			height: 50px;
+			line-height: 50px;
+			width: 100%;
+			display: flex;
+			a{
+				flex: 1;
+				// float: left;
+				text-decoration: none;
+				display: inline-block;
+				width: 30px;
+				height: 50px;
+				line-height: 50px;
+				margin-top: -2px;
+				img{
+					transform: scale(0.3);
+					vertical-align: middle;
+				}
+			}
+			div{
+				flex: 10;
+				float: left;
+				height: 40px;
+				line-height: 40px;
+				color:#fff;
+				img{
+					transform: scale(0.45);
+					vertical-align: middle;
+					display: inline-block;
+				}
+				input{
+					width: 80%;
+					border:none;
+					outline: none;
+					display: inline-block;
+					height: 35px;
+					line-height: 35px;
+					border-bottom: 2px solid #fff;
+					background: none;
+					color:#fff;
+					margin-left: -30px;	
+					padding-left: 20px;			
+				}
+			}
+			.search{
+				flex: 2;
+				width: 50px;
+				button{
+					
+					margin-top:15px;
+					border:none;
+					outline: none;
+					background-color:#e53228;
+					color:#fff;
+					padding:5px 10px;
+					border-radius: 15px;
+				}
+
+			}
+		}
+		.middle{
+			margin-top: 20px;
+			display: flex;
+			.shop-img{
+				flex:1;
+				margin-left: 10px;
+
+				img{
+					width: 45px;
+					height: 40px;
+				}
+			}
+			.shop-name{
+				flex:3;
+				color:#fff;
+				height: 38px;
+				line-height: 20px;
+				overflow:hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+			  -webkit-line-clamp: 2;
+			  -webkit-box-orient: vertical;
+			  font-size: 14px;
+			  padding:0px 5px 0px 0px;
+			}
+			.shop-fans{
+				flex:1;
+				color:#fff;
+				text-align: center;
+				font-size: 14px;
+				.fans-num{
+					
+				}
+				.fans-name{
+
+				}
+			}
+			.shop-follow{
+				flex:1.5;
+				color:#fff;
+				height: 44px;
+				line-height: 44px;
+				span{
+					height: 30px;
+					line-height: 32px;
+					display: inline-block;
+					
+					width: 66px;
+					text-align:center;
+					border-radius: 15px;
+				}
+				.follow{
+					background-color:#e53228;
+					
+				}
+				.un-follow{
+					background-color:#000;
+					opacity: 0.5;
+				}
+			}
+		}
+		.bottom{
+			height: 47px;
+			background-color:#fff;
+			position: relative;
+			z-index: 1;
+			ul{
+				height: 47px;
+				line-height: 47px;
+				display: flex;
+				text-align: center;
+				li{
+					flex: 1;
+					list-style-type: none;
+				}
+				.active-color{
+	        		color:#fff;
+			        background: #f12f35;
+	        	}
+			}
+		}
+	}
+	.goods-list{
+		margin-top: 170px;
+		
+		.goods{
+			box-sizing: border-box;
+			margin:10px 10px 100px 10px;
+			ul{
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content:space-between;
+				li{
+					border-radius: 8px;
+					list-style:none;
+					// width: calc(50% - 1.5px);
+					width: 48.5%;
+					box-sizing: border-box;
+					display: inline-block;
+					
+					margin-bottom: 10px;
+					background-color: #fff;
+					a{
+						text-decoration: none;
+   						color: grey;
+						.goods-img{
+							height: 100px;
+							width: 100%;
+							img{
+								border-radius: 10px 10px 0px 0px;
+								width: 100%;
+								height: 100px;
+							}
+						}
+						.goods-name{
+							height: 30px;
+							line-height: 30px;
+							background-color: #fff;
+							padding-left: 5px;
+							overflow:hidden;
+							text-overflow: ellipsis;
+							 white-space:nowrap;
+							min-width: 150px;
+
+						}
+						.goods-price{
+							padding-left: 5px;
+							height: 30px;
+							line-height: 30px;
+							background-color: #fff;
+							border-radius: 0 0px 10px 10px;
+							span{
+								color:#FF9521;
+								margin-right: 10px;
+
+							}
+							del{
+								color:#ccc;
+							}
+						}
+					}
+				}
+				
+				li:nth-child(even){
+					margin-left: 1.5%;
+				}
+				
+			}
+		
+		}
+	}
+}

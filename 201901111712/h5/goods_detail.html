@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+	<!-- <meta name="full-screen" content="yes"> -->
+	<title></title>
+	<link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/goods_detail.css">
+
+</head>
+<body>
+	<div id="app">
+		<div class="header">
+			<div class="top">
+				<a href="javascript:void(0)" @click="history.go(-1)">
+					<img src="../imgs/Group 13@3x.png">
+				</a>		
+				<div class="middle">
+					<img src="../imgs/kefu.png" alt="">
+				</div>
+				<div class="right">
+					<div class="one">
+						<img src="../imgs/Group 14@3x.png" alt="" @click="location.href='shopping.html'">						
+					</div>
+					<div class="two">
+						<img src="../imgs/Group 15@3x.png" alt="" class="selected">
+						<ul class="select">
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>消息</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>首页</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>我要反馈</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>分享</span>
+							</li>
+						</ul>						
+					</div>
+
+				</div>				
+			</div>
+			<!-- <div class="bottom">
+				<div class="item">商品</div>
+				<div class="comment">评价</div>
+				<div class="detail">详情</div>
+			</div> -->
+		</div>
+		<div class="swiper">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" v-for="swiper in swiperList">
+						<img :src="'http://122.112.209.170:8088'+swiper.url">
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>	  	  			
+		</div>
+		<div class="goods">
+			<div class="goods-item">
+				<div class="buying-price"><span>¥</span><span>{{goods.buying_price}}</span></div>
+				<div class="original-price"><span>价格</span><span>{{goods.original_price}}</span></div>
+				<div class="goods-name">{{goods.name}}</div>
+				<div class="courier-fees"><span>快递：</span>¥<span>0.00</span> 已售<span>{{goods.soldcount}}</span>件</div>
+			</div>
+			<div class="specifications">				
+				<div class="spt" @click="openSpecification(0)"><span>规格 请选择</span> <img src="../imgs/ic_right_arrow.png"></div>
+				<div class="spt-pop" v-show="sptState">
+					<div class="spt-info">						
+						<div class="close" @click="closeSpecification()">&times;</div>
+						<div class="goods-info">
+							<div class="goods-img"><img :src="'http://122.112.209.170:8088'+goods.icon"></div>
+							<div class="buying-price">
+								<span>¥</span><span>{{goods.buying_price}}</span>
+							</div>
+							<div class="inventory">库存{{goods.inventory}}件</div>
+							<div class="select">
+								<span>选择</span>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="spt-list" @touchmove.prevent>
+							<ul>
+								<li v-for="(classify,index) in goods.GoodsSpecificationCategory">
+									<div class="goods-type">{{classify.name}}</div>
+									<div class="goods-specification">
+										<span class="default"  
+										v-for="(child,ind) in classify.child" 
+										@click="selectCategory(index,ind,classify.goods_specification_category_id,child.goods_specification_category_id,classify.child)"
+										:class="{'active':sel[index] == ind}">{{child.name}}</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="buying-num">
+							<div class="num">购买数量</div>
+							<div class="calc">
+								<span class="reduce"  @click="changeMoney(goods,-1)">-</span>
+								<span>{{inventory}}</span>
+								<span class="add"  @click="changeMoney(goods,1)">+</span>
+							</div>
+						</div>
+						<div class="confirm" v-if="num===0">
+							<span class="join" @click="joinCart">加入购物车</span>
+							<span class="now"  @click="nowBuy">立即购买</span>
+						</div>
+						<div class="confirm2" v-else-if="num===1">
+							<span  @click="joinCart">确定</span>
+						</div>
+						<div class="confirm3" v-else="num===2">
+							<span  @click="nowBuy">确定</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="goods-comment" @click="goComment(goods.goods_id)">
+				<div class="top">
+					<div class="comment">宝贝评价（{{goods.commentCount}}）</div>
+					<div class="more">查看更多<img src="../imgs/next_red_icon.png"></div>
+				</div>
+				<div class="bottom">
+					<div class="img">
+						<img :src="'http://122.112.209.170:8088'+goods.comment_user_logo">
+						<span>{{goods.comment_nick_name}}</span>
+					</div>
+					<div class="reply">
+						{{goods.comment_content}}
+					</div>
+				</div>
+			</div>
+			<div class="shop">
+				<div class="img">
+					<img :src="'http://122.112.209.170:8088'+goods.shop_logo">
+					<span>{{goods.shop_name}}</span>
+					<div class="enter-shop">
+						<a :href="'shop.html?merchants_in_id='+goods.merchants_in_id">进店逛逛</a>
+					</div>
+				</div>
+				<div class="grade">
+					<div class="description">宝贝描述<span>{{goods.consistent_level | grade}}</span></div>
+					<div class="server">卖家服务<span>{{goods.service_attitude | grade}}</span></div>
+					<div class="logistics">物流服务<span>{{goods.logistics_service | grade}}</span></div>
+				</div>
+			</div>
+			<div class="goods-detail">
+				<div class="title">商品详情</div>
+				<div class="goods-detail-img">
+					<ul>
+						<li v-for="detail in goods.DetailImage"><img :src="'http://122.112.209.170:8088'+detail.url"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<ul class="nav">
+				<li class="shop">
+					<a :href="'shop.html?merchants_in_id='+goods.merchants_in_id">						
+						<img src="../imgs/xiangqingshangpu@3x.png" alt="">
+						<span>商铺</span>
+					</a>
+				</li>
+				<li class="server">
+					<img src="../imgs/tkuanxiangqzhongdelianximaijia@3x.png" alt="">
+					<span>客服</span>
+				</li>
+				<li class="collection" @click="goodsCollectAdd(goods.goods_id)" v-if="goods.is_collect==='0'">
+					<img src="../imgs/collection_grey_icon.png" alt="">
+					<span >收藏</span>
+				</li>
+				<li class="collection" @click="goodsCollectDelete(goods.goods_id)" v-else>
+					<img src="../imgs/collection_red_icon.png" alt="">
+					<span >收藏</span>
+				</li>
+				<li class="join" @click="openSpecification(1)">
+					<span>加入购物车</span>
+				</li>
+				<li class="now" @click="openSpecification(2)">
+					<span>立即购买</span>
+				</li>
+			</ul>
+		</div>
+  	</div>
+	<script src="../js/plugins/jquery/jquery.min.js"></script>
+	<script src="../js/plugins/vue/vue.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="../js/plugins/swiper/swiper.min.js"></script>
+	<script src="js/goods_detail.js"></script>
+</body>
+</html>

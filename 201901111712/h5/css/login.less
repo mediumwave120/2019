@@ -1,0 +1,103 @@
+#app{
+	margin:5px auto;
+	max-width: 640px;
+	text-align: center;
+	.logo{
+		margin:0 10px;
+		img{
+			margin-top: 40px;
+			margin-bottom: 10px;
+			width: 80px;
+			height: 80px;
+		}
+		margin-bottom: 20px;
+	}
+	.form{
+		margin:0 10px;
+		text-align: center;
+		.account{			
+			input{
+				width: 100%;
+				display: block;
+				border:none;
+				border-bottom: 1px solid rgba(247,69,16,.28);
+				height: 40px;
+				line-height: 40px;
+				outline: none;
+				font-size: 16px;
+			}
+			margin-bottom: 30px;
+		}
+		.pwd,.pwd2{
+			position: relative;			
+			input{
+				width: 100%;
+				display: block;
+				border:none;
+				border-bottom: 1px solid rgba(247,69,16,.28);
+				height: 40px;
+				line-height: 40px;
+				outline: none;
+				margin-bottom: 20px;
+				font-size: 16px;
+			}
+			span{
+				position: absolute;
+				top:10px;
+				right:10px; 
+				color:grey;
+				a{
+					color:grey;
+					text-decoration: none;
+				}
+			}
+		}
+		.pwd2{
+			display: none;
+			.code{
+				outline: none;
+				border:none;
+				font-size: 16px;
+				background-color: #fff;
+				color:grey;
+			}
+		}
+		.login{
+			position: relative;
+			top:10px;
+			input{
+				width: 100%;
+				display: block;
+				border:none;
+				color:#fff;
+				outline: none;
+				background-color: #FF8637;
+				border-radius: 20px;
+				height: 40px;
+				line-height: 40px;
+				font-size: 18px;
+				-webkit-appearance:none;
+			}
+		}
+		.short-msg{
+			position: relative;
+			top:40px;
+			input{
+				position: absolute;
+				outline: none;
+				border:none;
+				font-size: 16px;
+				background-color: #fff;
+				color:grey;
+				-webkit-appearance:none;
+			}
+			input:nth-child(1){
+				left:0;
+
+			}
+			input:nth-child(2){
+				right: 0;
+			}
+		}
+	}
+}

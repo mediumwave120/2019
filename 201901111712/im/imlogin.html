@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>niubi</title>
+<!--<script src="../../js/User/cookies.js"></script>-->
+</head>
+<body>
+
+<script>
+    function GetCookie(name) {
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null)
+            return unescape(arr[2]);
+        return null;
+    }
+    
+   // var user_img = GetCookie('UserLogo');
+   
+   window.onload = function () {
+       var webim = GetCookie('IM');
+       var im=localStorage.getItem('IM');
+ 
+        location.href = 'index.html?username=' + im ;
+        //location.href = 'index.html?username=' + webim + '&userimg' + user_img;
+    };
+
+
+</script>
+
+
+</body>
+</html>

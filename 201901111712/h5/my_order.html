@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+	<title></title>
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/my_order.css">
+
+</head>
+<body>
+	<div id="app">
+		<div class="header">
+			<div class="top">
+				<a  href="order.html">
+					<img src="../imgs/fh.png">
+				</a>		
+				<div>我的订单</div>				
+			</div>
+			<div class="bottom">
+				<div class="tab">
+					<div class="tab-item  active" data-tab="one">全部</div>
+					<div class="tab-item " data-tab="two">待付款</div>
+					<div class="tab-item " data-tab="three">待发货</div>
+					<div class="tab-item " data-tab="four">待收货</div>
+					<div class="tab-item " data-tab="five">待评价</div>
+				</div>				
+			</div>
+		</div>	
+		<ul class="shopping-car">
+			<li>
+				<div class="shop">
+					<span>奔哥店铺</span>
+					<img src="../imgs/ic_right_arrow.png">
+					<span class="state">等待买家付款</span>
+				</div>
+				<div class="goods">
+					<ul>
+						<li>
+							<div class="goods-info">
+								<img src="../imgs/loginbj2.png">
+								<div class="goods-name">农夫山泉</div>
+								<div class="goods-spec">颜色：白色，大立科技时间浪费</div>
+								<div class="goods-price">
+									<div class="one">
+										<span>¥</span><span>11</span>
+									</div>
+									<div class="two">
+										<del><span>¥</span>1111111</del>
+									</div>
+									<div class="three">
+										<span>2</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="calc">
+					<span class="total">共<span>1</span>件商品</span>
+					<span class="totals">合计¥<span>1</span>(含运费¥<span>100</span>)</span>
+				</div>
+				<div class="order-state">
+					<button class="cancle">取消订单</button>
+					<button class="pay">付款</button>
+				</div>
+			</li>	
+
+
+		</ul>		  	  
+  	</div>
+	<script src="../js/plugins/jquery/jquery.min.js"></script>
+	<script src="../js/plugins/vue/vue.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="../js/plugins/swiper/swiper.min.js"></script>
+	<script src="js/my_order.js"></script>
+</body>
+</html>

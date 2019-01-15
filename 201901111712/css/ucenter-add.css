@@ -1,0 +1,126 @@
+﻿
+.add {
+    overflow:hidden;
+}
+.add > .add-img {
+    float:left;margin-right:6px;
+}
+.modal-body {
+    overflow :hidden;
+}
+.modal-body .evaluate-s {
+    width:857px;
+    /*height:690px;*/
+    background-color:#f3f3f3;
+    float:right;
+    padding:30px;
+
+}
+.evaluate-s .goods-commend {
+    height:120px;
+    margin-bottom:20px;
+    margin-top:30px;
+
+}
+.evaluate-s .goods-commend span {
+         font-size:14px;
+        color:#313131;
+        line-height:120px;
+        display:inline-block;
+}
+.evaluate-s .goods-commend img {
+    height:120px;
+    width:120px;
+}
+.evaluate-content {
+    position:relative;
+}
+    .modal-body .evaluate-s .evaluate-content .txt {
+        width:707px;
+        height:260px;
+        background-color:#fff;
+        margin-top:15px;
+        color:#d1d1d1;
+        padding:12px;
+        font-size:14px;
+        resize:none;
+    }
+.evaluate-s .evaluate-content .textarea-numberbar {
+    position:absolute;
+    right:25px;
+    bottom:0;
+    z-index:1;
+}
+.evaluate-s .evaluate-pic span {
+    float:left;
+    font-size:14px;
+    color:#323232;
+}
+.evaluate-s .evaluate-pic {
+    margin-top:15px;
+    line-height:78px;
+
+}
+.evaluate-s .evaluate-pic ul{
+    height:100px;
+    /*overflow:hidden;*/
+}
+.evaluate-s .evaluate-pic ul li{
+     float:left;
+    text-align:center;
+    margin:2px 0;
+ width:77px;
+ height:78px;
+ line-height:78px;
+ background-color:rgba(209,209,209,.6);
+ margin-right:18px;
+
+}
+    .evaluate-s .evaluate-pic ul li input {
+        display:inline-block;
+        width:77px;
+        height:78px;
+        margin-top:-156px;
+        opacity:0;
+        cursor:pointer;
+    }
+.evaluate-s .goods-score {
+  
+    height:30px;
+    line-height:30px;
+    margin-top:-20px;
+    overflow:hidden;
+}
+    .evaluate-s .goods-score .scores {
+        float:left;
+        margin-right:22px;
+    }
+.evaluate-s .goods-score img {
+    vertical-align:middle;
+}
+ .evaluate-s .goods-score span {
+        font-size:14px;
+        color:#313131;
+        display:inline-block;
+    }
+.evaluate-pic ul li img {
+    vertical-align:middle;
+}
+.evaluate-pic ul li .imgs {
+    width:200px;
+    font-size:14px;
+    color:#313131;
+    text-align:left;margin-top:-93px;
+}
+  .evaluate-s  .btn-release {
+    width:120px;
+    height:40px;
+    background-color:#f86d51;
+    font-size:14px;
+    color:#fff;
+    cursor:pointer;
+    line-height:40px;
+    text-align:center;
+   float:right;
+   margin-right:20px;
+}

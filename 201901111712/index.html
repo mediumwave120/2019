@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="八驾马车商城">
+    <title>八驾马车商城</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/ft-carousel.css">
+    
+</head>
+<body>
+    <!-- mall header -->
+    <h-header></h-header>
+    <!-- mall -->
+    <div class="container" id="app">
+        <div class="home">
+            <div class="goods-classify">
+                <h3>全部商品类别</h3>
+                <!-- <ul>
+                    <li>首页</li>
+                    <li><a href="http://122.112.209.170:8088/pcpage/merchant/webim-live/imlogin.html">消息</a></li>
+                    <li><a href="ucenter.html?admission" class="shop-enter">商家入驻</a></li>
+                </ul> -->
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!-- left menu -->
+        <div class="menu">
+            <ul class="sidebar">     
+                <li v-for="goods_category in goods_category_list">
+                    <a :href="'goods_search.html?g_id='+goods_category.goods_category_id+'&q='+goods_category.name">{{goods_category.name}}</a> <span class="arrow"></span>
+                    <div class="submenu">
+                        <div class="leftdiv">
+                            <dl v-for="second_category in goods_category.SecondCategory">
+                                <dt>
+                                    <a  :href="'goods_search.html?goods_category_id='+second_category.goods_category_id">{{second_category.name}}
+                                    </a>
+                                </dt>
+                                <dd>
+                                    <a 
+                                    v-for="three_category in second_category.ThreeCategory"
+                                    :href="'goods_search.html?goods_category_id='+three_category.goods_category_id" 
+                                    >{{three_category.name}}</a> 
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="rightdiv">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!-- carousel -->
+            <div class="carousel">
+                <div class="ft-carousel" id="carousel">
+                    <ul class="carousel-inner">
+                        <li class="carousel-item" v-for="swiper in swiper_list" v-if="swiper.type=='1'"><img :src="'http://122.112.209.170:8088'+swiper.image" /></li>
+                        
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <!-- recommend -->
+        <div class="recommend">`
+            <h2 class="title">为你推荐</h2>
+            <div class="row" >
+                <div class="col-md-3" v-for="go in Goods" @click="Goods_Dateils(go.goods_id)">
+                    <a href="javascript:;">
+                        <img :src="'http://122.112.209.170:8088'+go.icon" alt="">
+                    </a>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="products">
+            <!-- household-electric -->
+            <div class="household-electric">
+                <div class="box-hd">
+                    <!-- <h2 class="title">家电</h2> -->
+                    <div class="more">
+                        <ul class="tab-list nav nav-tabs">
+                            <li class="active"><a href="#household-electric-hot" @click="GetHotGoodsList()" data-toggle="tab">热门</a></li>
+                            <li v-for="recommend_category in recommend_goods_category"><a href="#household-electric-hot" data-toggle="tab" @click="GetGoodsList(recommend_category.goods_category_id)" >{{recommend_category.name}}</a></li>
+                      
+                        </ul>
+                    </div> 
+                    <div class="clear"></div>                  
+                </div>
+                <div class="box-bd">
+                    <div class="row">
+                        <div class="col-md-3 ">
+                            <ul>
+                                <li>
+                                    <a href="详情.html"><img src="images/con4.jpg" alt=""></a>
+                                </li>
+                                 <li>
+                                    <img src="images/con8.jpg" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9">                          
+                            <div class="tab-content household-electric-content">
+                                 <!-- 热门 -->
+                                <div class="row tab-pane fade in active" id="household-electric-hot">
+                                    <div class="col-md-3" v-for="hotgoods in hotgoods">
+                                        <div class="img"  @click="Goods_Dateils(hotgoods.goods_id)">
+                                            <a href="javascript:;">
+                                                <img src="imgs/loginbj2.png"
+                                                v-if="hotgoods.icon==''">
+                                                <img :src="'http://122.112.209.170:8088'+hotgoods.icon"
+                                                v-else>
+                                            </a>
+                                        </div>
+                                        <h3><a href="#">{{hotgoods.name}}</a></h3>                                 
+                                        <p class="desc">全高清屏 / 人工智能语音</p>  
+                                        <p class="price"> 
+                                            <span class="num">{{hotgoods.buying_price}}</span>元  
+                                            <del><span class="num">{{hotgoods.original_price}}</span>元</del>  
+                                        </p> 
+                                        <p class="rank"></p>  
+                                        <div class="flag">    减 200 元  </div>   
+                                        <div class="review-wrapper" @click="Goods_Dateils(hotgoods.goods_id)"> 
+                                            <a href="javascript:;"> 
+                                                <span class="review">网购以来第一次送货到家，准确的说是到屋，电视好</span> 
+                                                <span class="author"> 来自于 平常心 的评价 
+                                                    <span class="date" data-date="1525591917"></span> 
+                                                </span> 
+                                            </a>
+                                        </div>  
+                                    </div>
+                                    <div class="col-md-3">
+                                        <ul>
+                                            <li>
+                                                <div class="img"> 
+                                                    <a href="#"> <img src="images/con2.png" > </a> 
+                                                </div>
+                                                <h3 class="title"><a href="#">小米净水器（厨下式）</a></h3>
+                                                <p class="price"><span class="num">1999</span>元</p>
+                                            </li>
+                                            <li>
+                                                <div class="img"> 
+                                                    <a href="#"> <img src="images/dapei11.jpg" > </a> 
+                                                </div>
+                                                <h3 class="title">
+                                                    <a href="#">浏览更多</a>
+                                                    
+
+                                                </h3>
+                                                <p><span class="hot">热门</span></p>
+                                            </li>
+                                        </ul>
+                                    </div>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad">
+                <img src="imgs/ad1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- mall footer -->
+    <h-footer></h-footer>
+    <!-- login -->
+    <h-login></h-login>
+
+    <script src="js/plugins/jquery/jquery.min.js"></script>
+    <script src="js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="js/plugins/vue/vue.min.js"></script>
+    <script src="js/plugins/carousel/ft-carousel.min.js"></script>
+    <script src="js/common/cookies.js"></script>   
+    <script src="js/common/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

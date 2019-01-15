@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+	<title></title>
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+
+</head>
+<body>
+	<div id="app">
+		<div class="header">			
+			<div class="top">
+		        <a  href="javascript:;" @click="history.go(-1)">
+		          <img src="../imgs/fh.png">
+		        </a>    
+		        <div>
+		          <img src="../imgs/search-5@2x.png">
+		          <input type="text" name="" v-model="searchText">
+		        </div>
+		        <div class="search">         
+		          <button @click="search(shop.merchants_in_id)">搜索</button>
+		        </div>       
+		    </div>
+		</div>	  
+  	</div>
+	<script src="../js/plugins/jquery/jquery.min.js"></script>
+	<script src="../js/plugins/vue/vue.min.js"></script>
+	<script src="../js/plugins/swiper/swiper.min.js"></script>
+	<script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+  <meta name="full-screen" content="yes">
+  <title></title>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="css/shop_list.css">
+
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <div class="top">
+        <a  href="javascript:;" @click="history.go(-1)">
+          <img src="../imgs/fh.png">
+        </a>    
+        <div>
+          <img src="../imgs/search-5@2x.png">
+          <input type="text" name="" v-model="searchText">
+        </div> 
+        <div class="search">         
+          <button @click="search()">搜索</button>
+        </div>      
+      </div>
+      <div class="bottom">
+        <ul>
+           <li v-for="(sort_list,i) in sortList" class="default" 
+              :class="{'active-color':i+1==sort_list.num}" @click="getMerchantsInList(i+1)">
+                {{sort_list.name}}
+              </li>
+        </ul>
+      </div>
+    </div>
+    <div class="shop-list">
+        <div class="shop">
+          <ul>
+            <li v-for="shop_list in shopList">
+              <div class="top">
+                <div class="left"><img :src="'http://122.112.209.170:8088'+shop_list.shop_logo"><span>{{shop_list.shop_name}}</span></div>
+                <div class="right"><a :href="'shop.html?merchants_in_id='+shop_list.merchants_in_id"><span>进店</span></a></div>
+              </div>
+              <div class="bottom">
+                <a :href="'goods_detail.html?goods_id='+icon_list.goods_id"  v-for="(icon_list,index) in shop_list.Goods" v-show="index<3">
+                  <img :src="'http://122.112.209.170:8088'+icon_list.icon">                  
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <script src="../js/plugins/jquery/jquery.min.js"></script>
+  <script src="../js/plugins/vue/vue.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="../js/plugins/swiper/swiper.min.js"></script>
+  <script src="js/shop_list.js"></script>
+</body>
+</html>

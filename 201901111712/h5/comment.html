@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+	<!-- <meta name="full-screen" content="yes"> -->
+	<title></title>
+	<link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/comment.css">
+
+</head>
+<body>
+	<div id="app">
+		<div class="header">
+			<div class="top">
+				<a href="javascript:void(0)" onclick="history.go(-1)">
+					<img src="../imgs/Group 13@3x.png">
+				</a>		
+				<div class="middle">
+					<img src="../imgs/kefu.png" alt="">
+				</div>
+				<div class="right">
+					<div class="one">
+						<img src="../imgs/Group 14@3x.png" alt="" @click="location.href='shopping.html'">						
+					</div>
+					<div class="two">
+						<img src="../imgs/Group 15@3x.png" alt="" class="selected">
+						<ul class="select">
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>消息</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>首页</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>我要反馈</span>
+							</li>
+							<li>
+								<img src="../imgs/fh.png" alt="">
+								<span>分享</span>
+							</li>
+						</ul>						
+					</div>
+
+				</div>				
+			</div>
+			<div class="bottom">
+				<div class="comment-all default" :class="{'active':isChoose1}" @click="getCommentList('1')">全部({{goodsComment.all_count}})</div>
+				<div class="comment-img default"  :class="{'active':isChoose2}"  @click="getCommentList('2')">有图({{goodsComment.image_count}})</div>
+				<div class="review default" :class="{'active':isChoose3}"  @click="getCommentList('3')">追加({{goodsComment.additional_count}})</div>
+			</div>
+		</div>
+		<div class="comment-list">
+			<ul>
+				<li v-for="clist in goodsComment.GoodsCommentList">
+					<div class="list">
+						<div class="img">
+							<img :src="'http://122.112.209.170:8088'+clist.logo">
+							<span>{{clist.nick_name}}</span>
+						</div>
+						<div class="time">{{clist.create_time}}</div>
+						<div class="reply">
+							{{clist.content}}
+						</div>
+						<div class="reply-img">
+
+							<!-- <img src="../imgs/bajiamache.png" v-if="clist.Image.length<1"> -->
+							<!-- <img src="../imgs/bajiamache.png" v-for="img in clist.Image" v-if="img.url===''"> -->
+							<img :src="'http://122.112.209.170:8088'+img.url" v-for="img in clist.Image">
+						</div>
+						<div class="operation">
+							<span>浏览{{clist.commentwatchcount}}次</span>
+							<span @click="commentDetail(clist.goods_comment_id)">评论</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>	
+		<div class="spt-pop">
+			<div class="spt-info">						
+				<div class="close">&times;</div>
+				<div class="goods-info">
+					<div class="goods-img"><img :src="'http://122.112.209.170:8088'+good.image"></div>
+					<div class="buying-price">
+						<span>¥</span><span>{{good.price}}</span>
+					</div>
+					<div class="inventory">库存{{good.inventory}}件</div>
+					<div class="select">
+						<span>选择</span>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="spt-list" @touchmove.prevent>
+					<ul>
+						<li v-for="(classify,index) in goods.GoodsSpecificationCategory">
+							<div class="goods-type">{{classify.name}}</div>
+							<div class="goods-specification">
+								<span class="default"  
+								v-for="(child,ind) in classify.child" 
+								@click="selectCategory(index,ind,classify,child.goods_specification_category_id)"
+								:class="{'active':sel[index] == ind}">{{child.name}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="buying-num">
+					<div class="num">购买数量</div>
+					<div class="calc">
+						<span class="reduce"  @click="changeMoney(goods,-1)">-</span>
+						<span>{{inventory}}</span>
+						<span class="add"  @click="changeMoney(goods,1)">+</span>
+					</div>
+				</div>
+				<div class="confirm">
+					<span>确定</span>
+				</div>
+			</div>
+		</div>	
+		<div class="footer">
+			<ul class="nav">
+				<li class="shop">
+					<img src="../imgs/xiangqingshangpu@3x.png" alt="">
+					<span>商铺</span>
+				</li>
+				<li class="server">
+					<img src="../imgs/tkuanxiangqzhongdelianximaijia@3x.png" alt="">
+					<span>客服</span>
+				</li>
+				<li class="collection">
+					<img src="../imgs/ic_message_normal.png" alt="">
+					<span >收藏</span>
+				</li>
+				<li class="join" >
+					<span>加入购物车</span>
+				</li>
+				<li class="now">
+					<span>立即购买</span>
+				</li>
+			</ul>
+		</div>
+  	</div>
+	<script src="../js/plugins/jquery/jquery.min.js"></script>
+	<script src="../js/plugins/vue/vue.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="../js/plugins/swiper/swiper.min.js"></script>
+	<script src="js/comment.js"></script>
+</body>
+</html>
