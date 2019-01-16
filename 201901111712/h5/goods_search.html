@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+  <!-- <meta name="full-screen" content="yes"> -->
+  <title></title>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="css/goods_search.css">
+
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      	<div class="top">
+	        <a  href="javascript:;" @click="history.go(-1)">
+	          <img src="../imgs/fh.png">
+	        </a>    
+	        <div>
+	          <img src="../imgs/search-5@2x.png">
+	          <input type="text" name="" v-model="searchText">
+	        </div>
+	        <div class="search">         
+	          <button @click="search()">搜索</button>
+	        </div>       
+      	</div>
+		<div class="bottom">
+		    <ul>
+		       <li v-for="(sort_list,i) in sortList" class="default" 
+		          :class="{'active-color':i+1==sort_list.num}" @click="getGoodsList(i+1)">
+		            {{sort_list.name}}
+		          </li>
+		    </ul>
+		 </div>
+    </div>
+    <div class="goods-list">
+        <div class="goods">
+          <ul>
+            <li v-for="goods in goodsList">
+              <a target="_parent" :href="'goods_detail.html?goods_id='+goods.goods_id">
+                <div class="goods-img">
+                  <img src="../imgs/bajiamache.png" v-if="goods.icon===''">
+                  <img :src="'http://122.112.209.170:8088'+goods.icon" v-else>
+
+                </div>
+                <div class="goods-name">
+                {{goods.name}}
+                </div>
+                <div class="goods-price">
+                  <span>¥{{goods.buying_price}}</span>
+                  <del>¥{{goods.original_price}}</del>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <script src="../js/plugins/jquery/jquery.min.js"></script>
+  <script src="../js/plugins/vue/vue.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/goods_search.js"></script>
+</body>
+</html>

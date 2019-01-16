@@ -7,7 +7,7 @@
 	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="../css/plugins/swiper/swiper.min.css">
 
-	<link rel="stylesheet" type="text/css" href="css/home.css">
+	<link rel="stylesheet" type="text/css" href="css/search.css">
 
 </head>
 <body>
@@ -17,19 +17,40 @@
 		        <a  href="javascript:;" @click="history.go(-1)">
 		          <img src="../imgs/fh.png">
 		        </a>    
-		        <div>
+		        <div class="search-area">
 		          <img src="../imgs/search-5@2x.png">
 		          <input type="text" name="" v-model="searchText">
 		        </div>
 		        <div class="search">         
-		          <button @click="search(shop.merchants_in_id)">搜索</button>
+		          <button @click="search">搜索</button>
 		        </div>       
 		    </div>
+		    <div class="tab">
+		    	<div class="default" 
+		    	v-for="(tab,i) in searchTab"
+		    	:class="{'active':i==tab.id}"
+		    	@click="changTab(i)"
+		    	:id="i">{{tab.name}}</div>
+		    </div>
+		</div>
+		<div class="search-list">
+			<div>
+				<div class="search-history">
+					搜索历史
+				</div>
+				<div class="delete" @click="delHistory">&times;</div>				
+			</div>
+			<div class="clear"></div>
+			<div class="history">
+				<ul>
+					<li v-for="list in searchList" @click="search(list)">{{list}}</li>
+				</ul>
+			</div>
 		</div>	  
   	</div>
 	<script src="../js/plugins/jquery/jquery.min.js"></script>
 	<script src="../js/plugins/vue/vue.min.js"></script>
 	<script src="../js/plugins/swiper/swiper.min.js"></script>
-	<script src="js/home.js"></script>
+	<script src="js/search.js"></script>
 </body>
 </html>

@@ -23,70 +23,112 @@ body{
 		height: 50px;
 		line-height: 50px;
 		z-index:100;
+		max-width: 600px;
+		margin:0 auto;
 		.top{
-			margin-top: -164px;		
-			// background-color: #fd6603;
-			height: 50px;
-			line-height: 50px;
+			display: flex;	
+			background-color: #fd6603;
+			height: 60px;
+			line-height: 60px;
 			width: 100%;
-			display: flex;
 			a{
-				flex: 1;
-				// float: left;
 				text-decoration: none;
-				display: inline-block;
-				width: 30px;
-				height: 50px;
-				line-height: 50px;
-				margin-top: -2px;
 				img{
-					transform: scale(0.3);
+					transform: scale(0.4);
 					vertical-align: middle;
 				}
 			}
-			div{
-				flex: 10;
-				float: left;
-				height: 40px;
-				line-height: 40px;
-				color:#fff;
+			.search-area{
+				width: 260px;
+				margin-right: 10px;
 				img{
-					transform: scale(0.45);
+					transform: scale(0.4);
 					vertical-align: middle;
-					display: inline-block;
 				}
 				input{
-					width: 80%;
+					width: 85%;
 					border:none;
 					outline: none;
 					display: inline-block;
-					height: 35px;
-					line-height: 35px;
-					border-bottom: 2px solid #fff;
+					height: 30px;
+					line-height: 30px;
+					border: 2px solid #fff;
 					background: none;
 					color:#fff;
-					margin-left: -30px;	
-					padding-left: 20px;			
+					margin-left: -40px;	
+					border-radius: 15px;
+					padding-left: 30px;
 				}
 			}
+			
 			.search{
-				flex: 2;
-				width: 50px;
+				float: right;
+				height: 50px;
+				line-height: 63px;
+				color:#fff;
 				button{
-					
-					margin-top:15px;
+					position: relative;
+					z-index: 100;
 					border:none;
 					outline: none;
-					background-color:#e53228;
+					display: inline-block;
+					height: 30px;
+					line-height: 30px;
+					border: 2px solid #fff;
+					background: none;
+					width: 60px;
 					color:#fff;
-					padding:5px 10px;
 					border-radius: 15px;
 				}
-
+				
+			}
+		}
+		.tab{
+			display: flex;
+			text-align: center;
+			line-height: 50px;
+			.default{
+				flex: 1;
+				
+			}
+			
+			.active{
+				border-bottom: 1px solid #fd6603;
 			}
 		}
 	}
-	
+	.search-list{
+		margin:110px 5px 5px 5px;
+		.search-history{
+			float: left;
+			line-height: 40px;
+			padding-left: 10px;
+			font-size: 20px;
+		}
+		.delete{
+			float: right;
+			font-size: 30px;
+			line-height: 40px;
+			margin-right: 10px;
+		}
+		.clear{
+			clear: both;
+		}
+		.history{
+
+			ul{
+				padding:5px;
+				li{
+					display: inline-block;
+					margin: 5px;
+					background-color: #e0dede;
+					border-radius: 5px;
+					line-height: 25px;
+					padding:5px 10px;
+				}
+			}
+		}
+	}
 
 	
 }

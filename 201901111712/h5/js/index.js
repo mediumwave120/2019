@@ -104,7 +104,7 @@ $(function(){
 	    // } else if (/android/.test(ua)) {
 	    //         //alert("android");
 	    // }
-	            $(this).height(documentheight-55)    
+	            $(this).height(documentheight-105)    
 		
 		// if($(this).contents().find("body").height()>documentheight){
 		// 	$(this).height(mainheight+documentheight);

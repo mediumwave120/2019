@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title></title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+		button{
+			display: block;
+			border: none;
+			margin: 5px 0px;
+			line-height: 40px;
+			color: #fff;
+			width: 100%;
+			outline: none;
+			background-color: gold;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<script src="../js/plugins/jquery/jquery.min.js"></script>
+	<script src="js/share.js"></script>
+	<button data-mshare="0">原生分享面板</button>
+	<button data-mshare="1">朋友圈分享</button>
+	<button data-mshare="2">发送给微信朋友</button>
+	<!-- <a href="javascript:window.location.href='weixin://'">javascript:window.location.href='weixin://' </a>
+	<a href="weixin://">weixin:// </a>
+	<p><a href="weixin://dl/businessWebview/link/?appid=wx707c5fa91ef0a58c&url=baidu.com">test </a></p>
+	<p><a href="weixin://dl/businessWebview/link/?appid=wx707c5fa91ef0a58c&url=http://baidu.com
+">http </a></p> -->
+	<script>
+	var mshare = new mShare({
+	    title: '我有酒，请讲出你的故事',
+	    url: 'https://mediumwave120.github.io/2019/201901111712/h5/index.html',
+	    desc: '那是在一个冬天...',
+	    img: 'http://placehold.it/150x150'	
+	});
+	$('button').click(function () {
+	    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
+	    mshare.init(+$(this).data('mshare'));
+	});
+	</script>
+
+</body>
+</html>
