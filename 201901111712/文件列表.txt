@@ -1,4 +1,4 @@
-商品详情  goods_detail.htmlgoods_detail.css/
+商品详情  goods_detail.html/goods_detail.css
 商品搜索 goods_search.html/goods_search.css
 首页 index.html/index.css
 支付方式 payment_mode.html/payment_mode.css
